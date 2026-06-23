@@ -1,0 +1,250 @@
+{
+  "site": {
+    "title": "Masiwei Rotating Archive",
+    "brand": "Masiwei Rotating Archive",
+    "artist": "马思唯",
+    "artistDisplay": "MASIWEI",
+    "version": "0.4.1-preload-covers",
+    "audioStorage": "Cloudflare R2",
+    "r2BaseUrl": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev",
+    "coverStorage": "local-webp-files",
+    "dataCache": "default-browser-cache",
+    "coverLoading": "initial visible cover preload + background remaining preload"
+  },
+  "albums": [
+    {
+      "title": "黑马",
+      "displayTitle": "黑马",
+      "artist": "马思唯",
+      "artistDisplay": "Masiwei",
+      "year": "2021",
+      "type": "Album",
+      "cover": "./covers/01-album-7a0ccb66.webp",
+      "palette": [
+        "#060606",
+        "#2d3629",
+        "#f0dfc3"
+      ],
+      "tracks": [
+        "木头人",
+        "破晓",
+        "吹牛老爹",
+        "Tag",
+        "H.O.T",
+        "今天",
+        "不会说谎的眼睛 (feat. Dragon Pig 龙猪)",
+        "卖火柴的小女孩",
+        "飞来横祸 (feat. 阿达娃)",
+        "为什么",
+        "Money On My Mind (feat. 阿达娃)",
+        "东大街",
+        "我不用休息",
+        "豆瓣酱",
+        "Hip-Hop Saved My Life"
+      ],
+      "coverStatus": "external-webp"
+    },
+    {
+      "title": "Humble Swag",
+      "displayTitle": "HUMBLE SWAG",
+      "artist": "马思唯",
+      "artistDisplay": "Masiwei",
+      "year": "2022",
+      "type": "Album",
+      "cover": "./covers/02-humble-swag.webp",
+      "palette": [
+        "#e7e4d7",
+        "#1d7838",
+        "#0d1e12"
+      ],
+      "tracks": [
+        "东方明珠 Intro",
+        "SNTS",
+        "长城",
+        "We Back",
+        "Like Me",
+        "Humble Swag",
+        "拉了拉了",
+        "卧底",
+        "登机",
+        "候鸟",
+        "Beast Mode",
+        "后台 Interlude",
+        "内幕",
+        "你我几兄弟",
+        "Humble Swag Pt.2",
+        "亚特兰蒂斯"
+      ],
+      "coverStatus": "external-webp"
+    },
+    {
+      "title": "黑马王子",
+      "displayTitle": "黑马王子",
+      "artist": "马思唯",
+      "artistDisplay": "Masiwei",
+      "year": "2020",
+      "type": "Album",
+      "cover": "./covers/03-album-ff680115.webp",
+      "palette": [
+        "#f5f0e8",
+        "#12100f",
+        "#a51627"
+      ],
+      "tracks": [
+        "白天做梦",
+        "Successful",
+        "黑马王子",
+        "别害怕",
+        "天生我材必有用",
+        "没有人会不爱音乐",
+        "Can I Have Your Number",
+        "花花公子 (feat. step.jad)",
+        "Private Party (feat. KnowKnow)",
+        "浴缸",
+        "嘟嘟嘟噜噜",
+        "One More Chance",
+        "阿姆斯特丹 (feat. KnowKnow)",
+        "跑得脱马脑壳",
+        "成都",
+        "我在郫县",
+        "Where You At",
+        "GO"
+      ],
+      "coverStatus": "external-webp"
+    },
+    {
+      "title": "狗咬狗",
+      "displayTitle": "狗咬狗",
+      "artist": "马思唯 / 艾志恒Asen",
+      "artistDisplay": "Masiwei / Asen",
+      "year": "2023",
+      "type": "Collab Album",
+      "cover": "./covers/04-album-6f13c892.webp",
+      "palette": [
+        "#050b12",
+        "#02a8de",
+        "#ff7b21"
+      ],
+      "tracks": [
+        "DBD Intro",
+        "训练日",
+        "第一块劳",
+        "黑色星期五",
+        "P.Y.T",
+        "DBD Radio Interlude",
+        "说耍的",
+        "是啊",
+        "GOAT Right Now",
+        "链子在空中甩",
+        "表演赛",
+        "Babe (feat. 罗言)",
+        "Bars"
+      ],
+      "coverStatus": "external-webp"
+    },
+    {
+      "title": "339 EP",
+      "displayTitle": "339 EP",
+      "artist": "HARIKIRI / 马思唯 / Bohan Phoenix / J.Mag",
+      "artistDisplay": "Masiwei",
+      "year": "2020",
+      "type": "EP",
+      "cover": "./covers/05-339-ep.webp",
+      "palette": [
+        "#111111",
+        "#c8bca4",
+        "#f1eee7"
+      ],
+      "tracks": [
+        "What U Want (feat. Masiwei, Bohan Phoenix, J.Mag)",
+        "Think Too Much (feat. Masiwei, Bohan Phoenix, J.Mag)",
+        "Talk a Lot (feat. Masiwei, J.Mag, Bohan Phoenix)",
+        "Blame (feat. Masiwei, Bohan Phoenix, J.Mag)",
+        "What U Want (Instrumental)",
+        "Think Too Much (Instrumental)",
+        "Talk a Lot (Instrumental)",
+        "Blame (Instrumental)"
+      ],
+      "coverStatus": "external-webp"
+    },
+    {
+      "title": "Humble Swag GT Mixtape",
+      "uiTitle": "Humble Swag GT",
+      "displayTitle": "HUMBLE SWAG GT",
+      "artist": "马思唯",
+      "artistDisplay": "Masiwei",
+      "year": "2022",
+      "type": "Mixtape",
+      "cover": "./covers/06-humble-swag-gt-mixtape.webp",
+      "palette": [
+        "#f4ee18",
+        "#00a8dd",
+        "#fb3164"
+      ],
+      "tracks": [
+        "Flow Guilty",
+        "年年有余",
+        "单机游戏",
+        "Hometown",
+        "Coco Elva Tia",
+        "22' Freestyle",
+        "Different Flow",
+        "欺骗游戏",
+        "20岁的贷款",
+        "马医生"
+      ],
+      "coverStatus": "external-webp"
+    },
+    {
+      "title": "P.E.I Vol.2",
+      "displayTitle": "P.E.I VOL.2",
+      "artist": "马思唯",
+      "artistDisplay": "Masiwei",
+      "year": "2014",
+      "type": "Mixtape",
+      "cover": "./covers/07-p-e-i-vol-2.webp",
+      "palette": [
+        "#151515",
+        "#8a5a25",
+        "#e2c08a"
+      ],
+      "tracks": [
+        "intro冷板凳",
+        "成都Rappers_ft.FreeT",
+        "追求_ft.TY 马思唯;Ty",
+        "Total Wreak",
+        "崂山道士 MV",
+        "MLP_ft.TY 马思唯;Ty",
+        "烂眼儿_Skip_Ft_小新",
+        "烂眼儿（说唱会馆REMIX）",
+        "outro都来耍"
+      ],
+      "coverStatus": "external-webp"
+    },
+    {
+      "title": "R&B All Night (Masiwei Remix)",
+      "displayTitle": "R&B All Night",
+      "uiTitle": "R&B All Night",
+      "artist": "马思唯 / KnowKnow",
+      "artistDisplay": "MASIWEI · KNOWKNOW",
+      "year": "2021",
+      "type": "Single",
+      "cover": "./covers/08-randb-all-night-masiwei-remix.webp",
+      "palette": [
+        "#15070a",
+        "#b33126",
+        "#f0b36a"
+      ],
+      "tracks": [
+        {
+          "title": "R&B All Night (Masiwei Remix)",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/rnb-all-night-masiwei-remix.mp3",
+          "duration": 129.28,
+          "lyricPreview": "R&B all night",
+          "lyricsNote": "完整歌词未嵌入；当前仅展示极短歌词片段。"
+        }
+      ],
+      "coverStatus": "external-webp"
+    }
+  ]
+}
