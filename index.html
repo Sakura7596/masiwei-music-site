@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Masiwei Rotating Archive — v0.4.1 Preload</title>
+  <title>Masiwei Music Site — v0.6.3 Lyrics Offset</title>
   <style>
     :root{
       --bg:#050505;--fg:#fff7ec;--muted:rgba(255,247,236,.62);--line:rgba(255,255,255,.16);
@@ -229,6 +229,143 @@
       line-height:1.55;
       font-weight:750;
     }
+
+    .lyric-panel{
+      position:absolute;
+      left:clamp(22px,4.2vw,72px);
+      top:50%;
+      z-index:42;
+      width:min(360px,27vw);
+      max-height:min(62vh,620px);
+      transform:translateY(-50%);
+      display:grid;
+      grid-template-rows:auto 1fr auto;
+      gap:18px;
+      color:rgba(255,255,255,.72);
+      text-shadow:0 2px 18px rgba(0,0,0,.48);
+      pointer-events:auto;
+      opacity:.96;
+    }
+    .lyric-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding-left:14px;
+      border-left:1px solid rgba(255,255,255,.18);
+    }
+    .lyric-kicker{
+      font-size:11px;
+      font-weight:950;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.43);
+    }
+    .lyric-status{
+      font-size:10px;
+      font-weight:900;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.30);
+      white-space:nowrap;
+    }
+    .lyric-window{
+      position:relative;
+      overflow:hidden;
+      min-height:330px;
+      mask-image:linear-gradient(to bottom,transparent 0%,#000 16%,#000 80%,transparent 100%);
+      -webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 16%,#000 80%,transparent 100%);
+    }
+    .lyric-window::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:0;
+      background:radial-gradient(circle at 8% 45%,rgba(255,255,255,.08),transparent 30%);
+      pointer-events:none;
+    }
+    .lyric-list{
+      position:relative;
+      z-index:1;
+      display:grid;
+      gap:14px;
+      padding:120px 0 150px;
+      transform:translate3d(0,var(--lyricY,0px),0);
+      transition:transform .20s cubic-bezier(.2,.9,.18,1);
+      will-change:transform;
+    }
+    .lyric-row{
+      position:relative;
+      max-width:330px;
+      padding-left:16px;
+      font-size:clamp(15px,1.15vw,19px);
+      line-height:1.52;
+      font-weight:800;
+      letter-spacing:-.01em;
+      color:rgba(255,255,255,.34);
+      opacity:.58;
+      filter:blur(.18px);
+      transform:translateX(0) scale(.985);
+      transition:color .16s,opacity .16s,filter .16s,transform .16s,text-shadow .16s;
+    }
+    .lyric-row::before{
+      content:"";
+      position:absolute;
+      left:0;
+      top:.72em;
+      width:5px;
+      height:5px;
+      border-radius:999px;
+      background:rgba(255,255,255,.18);
+      transition:.28s;
+    }
+    .lyric-row.is-near{
+      color:rgba(255,255,255,.58);
+      opacity:.78;
+      filter:none;
+    }
+    .lyric-row.is-active{
+      color:rgba(255,247,236,.98);
+      opacity:1;
+      filter:none;
+      transform:translateX(8px) scale(1.045);
+      text-shadow:0 0 26px rgba(255,255,255,.22),0 4px 24px rgba(0,0,0,.55);
+    }
+    .lyric-row.is-active::before{
+      width:18px;
+      height:3px;
+      left:-5px;
+      top:.82em;
+      background:#fff7ec;
+      box-shadow:0 0 18px rgba(255,255,255,.62);
+    }
+    .lyric-empty{
+      padding:120px 0;
+      color:rgba(255,255,255,.38);
+      font-size:13px;
+      font-weight:800;
+      line-height:1.7;
+    }
+    .lyric-foot{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      padding-left:14px;
+      border-left:1px solid rgba(255,255,255,.12);
+      color:rgba(255,255,255,.32);
+      font-size:10px;
+      font-weight:900;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+    .lyric-dot{
+      width:6px;
+      height:6px;
+      border-radius:999px;
+      background:rgba(255,255,255,.34);
+      box-shadow:0 0 14px rgba(255,255,255,.24);
+    }
+
 .detail-panel{
       position:absolute;
       right:clamp(24px,4.4vw,72px);
@@ -885,8 +1022,29 @@
     lyricPanel.classList.add("show");
   }
 
+
+  function renderLyricsIdle(){
+    if(!lyricPanel||isPlaying)return;
+    const album=albums[activeAlbum];
+    const first=album&&album.tracks&&album.tracks.length?getTrack(activeAlbum,0):null;
+    const preview=first&&first.lyricPreview?first.lyricPreview:"选择一首歌后，左侧会显示同步歌词。";
+    lyricPanel.innerHTML=`
+      <div class="lyric-head">
+        <div class="lyric-kicker">LYRICS</div>
+        <div class="lyric-status">READY</div>
+      </div>
+      <div class="lyric-window">
+        <div class="lyric-list" style="--lyricY:0px">
+          <div class="lyric-row is-active">${esc(preview)}</div>
+        </div>
+      </div>
+      <div class="lyric-foot"><span class="lyric-dot"></span><span>${esc(album?album.title:"SELECT TRACK")}</span></div>
+    `;
+  }
+
   function updateScene(){
     const a=albums[activeAlbum];
+    renderLyricsIdle();
     coverIndexesForFirstPaint().forEach(i=>albums[i]&&preloadImage(albums[i].cover));
     renderLyricPanel();
     app.style.setProperty("--c1",a.palette[0]);app.style.setProperty("--c2",a.palette[1]);app.style.setProperty("--c3",a.palette[2]);app.style.setProperty("--activeCover",`url("${a.cover}")`);
@@ -948,16 +1106,158 @@
   }
   function closeDrawer(){drawer.classList.remove("open");drawerBackdrop.classList.remove("open");drawer.setAttribute("aria-hidden","true")}
 
+
+  let lyricCache=new Map();
+  let currentLyrics=[];
+  let currentLyricsOffset=0;
+  let currentLyricIndex=-1;
+  let lyricTimer=null;
+
+  function parseLrc(text){
+    const lines=[];
+    String(text||"").split(/\r?\n/).forEach(raw=>{
+      const line=raw.trim();
+      if(!line)return;
+      const matches=[...line.matchAll(/\[(\d{1,2}):(\d{2})(?:\.(\d{1,3}))?\]/g)];
+      if(!matches.length)return;
+      const content=line.replace(/\[[^\]]+\]/g,"").trim();
+      if(!content)return;
+      matches.forEach(m=>{
+        const min=Number(m[1]||0);
+        const sec=Number(m[2]||0);
+        const ms=Number((m[3]||"0").padEnd(3,"0"));
+        lines.push({time:min*60+sec+ms/1000,text:content});
+      });
+    });
+    return lines.sort((a,b)=>a.time-b.time);
+  }
+
+  async function loadLyricsForTrack(track){
+    if(!track)return [];
+    if(track.lyricsUrl){
+      if(lyricCache.has(track.lyricsUrl))return lyricCache.get(track.lyricsUrl);
+      try{
+        const res=await fetch(track.lyricsUrl);
+        if(!res.ok)throw new Error(res.status);
+        const text=await res.text();
+        const parsed=parseLrc(text);
+        lyricCache.set(track.lyricsUrl,parsed);
+        return parsed;
+      }catch(err){
+        console.warn("lyrics load failed",err);
+      }
+    }
+    if(track.lyrics){
+      return parseLrc(track.lyrics);
+    }
+    return [];
+  }
+
+  function renderLyricsPanel(lines,track){
+    if(!lyricPanel)return;
+    currentLyrics=Array.isArray(lines)?lines:[];
+    currentLyricIndex=-1;
+
+    if(!currentLyrics.length){
+      lyricPanel.innerHTML=`
+        <div class="lyric-head">
+          <div class="lyric-kicker">LYRICS</div>
+          <div class="lyric-status">NO LRC</div>
+        </div>
+        <div class="lyric-window"><div class="lyric-empty">这首歌还没有同步歌词。<br>可在 library.json 中添加 lyricsUrl。</div></div>
+        <div class="lyric-foot"><span class="lyric-dot"></span><span>${esc(track&&track.title?track.title:"NO TRACK")}</span></div>
+      `;
+      return;
+    }
+
+    lyricPanel.innerHTML=`
+      <div class="lyric-head">
+        <div class="lyric-kicker">SYNCED LYRICS</div>
+        <div class="lyric-status">${currentLyrics.length} LINES</div>
+      </div>
+      <div class="lyric-window" id="lyricWindow">
+        <div class="lyric-list" id="lyricList">
+          ${currentLyrics.map((line,i)=>`<div class="lyric-row" data-lyric-index="${i}">${esc(line.text)}</div>`).join("")}
+        </div>
+      </div>
+      <div class="lyric-foot"><span class="lyric-dot"></span><span>${esc(track&&track.title?track.title:"CURRENT TRACK")}</span></div>
+    `;
+    updateLyricsByTime(0,true);
+  }
+
+  async function prepareLyrics(albumIndex,trackIndex){
+    const track=getTrack(albumIndex,trackIndex);
+    currentLyricsOffset=Number(track.lyricsOffset||0);
+    const lines=await loadLyricsForTrack(track);
+    renderLyricsPanel(lines,track);
+  }
+
+  function updateLyricsByTime(time,force=false){
+    if(!currentLyrics.length||!lyricPanel)return;
+    let idx=currentLyrics.findIndex((line,i)=>{
+      const next=currentLyrics[i+1];
+      return time>=line.time && (!next || time<next.time);
+    });
+    if(idx<0)idx=0;
+    if(!force&&idx===currentLyricIndex)return;
+    currentLyricIndex=idx;
+
+    const rows=[...lyricPanel.querySelectorAll(".lyric-row")];
+    rows.forEach((row,i)=>{
+      row.classList.toggle("is-active",i===idx);
+      row.classList.toggle("is-near",Math.abs(i-idx)===1);
+    });
+
+    const list=lyricPanel.querySelector("#lyricList");
+    const win=lyricPanel.querySelector("#lyricWindow");
+    const active=lyricPanel.querySelector(`.lyric-row[data-lyric-index="${idx}"]`);
+    if(list&&win&&active){
+      const target=win.clientHeight*.46-(active.offsetTop+active.offsetHeight/2);
+      list.style.setProperty("--lyricY",`${target}px`);
+    }
+  }
+
+  function startLyricTicker(){
+    clearInterval(lyricTimer);
+    lyricTimer=setInterval(()=>{
+      if(audioPlayer&&audioPlayer.src&&!audioPlayer.paused){
+        updateLyricsByTime((audioPlayer.currentTime||0)+currentLyricsOffset);
+      }else if(isPlaying&&startedAt){
+        updateLyricsByTime(((Date.now()-startedAt)/1000)+currentLyricsOffset);
+      }
+    },160);
+  }
+
   function getTrack(albumIndex, trackIndex){
     const album=albums[albumIndex];
-    const raw=album.tracks[trackIndex];
-    if(typeof raw==="string"){
-      return {title:raw,audio:"",lyrics:[]};
+    if(!album||!album.tracks||!album.tracks.length){
+      return {title:`Track ${trackIndex+1}`,audio:"",lyrics:""};
     }
+    const raw=album.tracks[trackIndex];
+
+    if(typeof raw==="string"){
+      return {
+        title:raw,
+        artist:album.artist||"",
+        audio:"",
+        duration:0,
+        lyricPreview:"",
+        lyrics:"",
+        lyricsUrl:"",
+        lyricsFormat:""
+      };
+    }
+
     return {
+      ...raw,
       title:raw.title||raw.name||`Track ${trackIndex+1}`,
+      artist:raw.artist||album.artist||"",
       audio:raw.audio||raw.src||"",
-      lyrics:Array.isArray(raw.lyrics)?raw.lyrics:[]
+      duration:raw.duration||0,
+      lyricPreview:raw.lyricPreview||"",
+      lyrics:raw.lyrics||"",
+      lyricsUrl:raw.lyricsUrl||"",
+      lyricsFormat:raw.lyricsFormat||""
     };
   }
 
@@ -1030,6 +1330,8 @@
 
     currentAlbum=albumIndex;
     currentTrack=trackIndex;
+    prepareLyrics(albumIndex,trackIndex);
+    startLyricTicker();
     isPlaying=true;
     startedAt=Date.now();
     progressBar.style.width="0%";
@@ -1086,6 +1388,7 @@
       audioPlayer.play().then(()=>{
         isPlaying=true;
         playBtn.textContent="Ⅱ";
+        startLyricTicker();
         updateTrackState();
       }).catch(()=>startPlaceholder(currentAlbum,currentTrack));
     }else{

@@ -4,7 +4,7 @@
     "brand": "Masiwei Rotating Archive",
     "artist": "马思唯",
     "artistDisplay": "MASIWEI",
-    "version": "0.4.1-preload-covers",
+    "version": "0.6.3-rnb-offset-fixed",
     "audioStorage": "Cloudflare R2",
     "r2BaseUrl": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev",
     "coverStorage": "local-webp-files",
@@ -137,7 +137,17 @@
         "GOAT Right Now",
         "链子在空中甩",
         "表演赛",
-        "Babe (feat. 罗言)",
+        {
+          "title": "Babe (feat. 罗言)",
+          "artist": "马思唯 / 艾志恒Asen",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E7%8B%97%E5%92%AC%E7%8B%97/Babe.flac",
+          "duration": 191.33,
+          "lyricPreview": "每当你觉得孤单 just talk to me babe",
+          "lyricsUrl": "./lyrics/dog-bite-dog/12-babe.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
         "Bars"
       ],
       "coverStatus": "external-webp"
@@ -238,10 +248,14 @@
       "tracks": [
         {
           "title": "R&B All Night (Masiwei Remix)",
-          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/rnb-all-night-masiwei-remix.mp3",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/rnb%20all%20night.flac",
           "duration": 129.28,
-          "lyricPreview": "R&B all night",
-          "lyricsNote": "完整歌词未嵌入；当前仅展示极短歌词片段。"
+          "lyricPreview": "r&b all night 我们不用睡觉",
+          "lyricsNote": "完整歌词未嵌入；当前仅展示极短歌词片段。",
+          "lyricsUrl": "./lyrics/rnb-all-night-masiwei-remix.lrc",
+          "lyricsFormat": "lrc",
+          "lyrics": "",
+          "lyricsOffset": 0.45
         }
       ],
       "coverStatus": "external-webp"
