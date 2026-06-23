@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Masiwei Music Site — v0.6.3 Lyrics Offset</title>
+  <title>Masiwei Music Site — v0.6.6 Lyrics Fix</title>
   <style>
     :root{
       --bg:#050505;--fg:#fff7ec;--muted:rgba(255,247,236,.62);--line:rgba(255,255,255,.16);
@@ -43,7 +43,7 @@
       position:fixed;left:0;right:0;top:0;z-index:120;display:flex;justify-content:space-between;align-items:center;gap:24px;
       padding:18px clamp(18px,3vw,42px);color:rgba(255,255,255,.88);text-shadow:0 2px 18px rgba(0,0,0,.46);pointer-events:none
     }
-    .brand{pointer-events:auto;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:950;letter-spacing:-.01em;white-space:nowrap}
+    .brand{pointer-events:none;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:950;letter-spacing:-.01em;white-space:nowrap}
     .brand-mark{width:30px;height:30px;display:grid;place-items:center;border-radius:50%;background:var(--fg);color:#050505;font-weight:1000}
     .top-actions{pointer-events:auto;display:flex;align-items:center;gap:24px;font-size:13px;font-weight:850;white-space:nowrap}
     .top-actions button{opacity:.74;transition:.2s}.top-actions button:hover{opacity:1;transform:translateY(-1px)}
@@ -277,12 +277,8 @@
       -webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 16%,#000 80%,transparent 100%);
     }
     .lyric-window::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      z-index:0;
-      background:radial-gradient(circle at 8% 45%,rgba(255,255,255,.08),transparent 30%);
-      pointer-events:none;
+      content:none;
+      display:none;
     }
     .lyric-list{
       position:relative;
@@ -325,11 +321,11 @@
       filter:none;
     }
     .lyric-row.is-active{
-      color:rgba(255,247,236,.98);
+      color:#fff7ec;
       opacity:1;
       filter:none;
       transform:translateX(8px) scale(1.045);
-      text-shadow:0 0 26px rgba(255,255,255,.22),0 4px 24px rgba(0,0,0,.55);
+      text-shadow:0 0 18px rgba(255,247,236,.32),0 4px 24px rgba(0,0,0,.62);
     }
     .lyric-row.is-active::before{
       width:18px;
@@ -604,7 +600,85 @@
     @media(max-width:1050px){.cover-card{width:min(47vh,54vw,430px)}.detail-panel{right:22px;width:min(320px,32vw)}.red-unit .word{font-size:clamp(84px,18vw,190px)}.red-unit .artist-under{font-size:clamp(22px,6vw,40px)}}
     @media(max-width:850px){.top-actions button:nth-child(2),.top-actions button:nth-child(3){display:none}.cover-card{width:min(42vh,72vw,390px)}.detail-panel{left:18px;right:18px;top:auto;bottom:126px;width:auto;transform:none;text-align:center;place-items:center}.album-meta,.detail-actions{justify-content:center}.detail-panel::before{inset:-24px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.42))}.detail-title{justify-items:center}.track-preview,.left-caption,.dots,.lyric-panel{display:none}.script-sign{font-size:clamp(72px,19vw,132px);top:43%}.red-track{top:38%}.player{width:calc(100% - 24px);bottom:12px;border-radius:22px;grid-template-columns:44px 1fr}.controls{grid-column:1/-1;justify-content:center}}
     @media(max-width:560px){.topbar{padding:14px;font-size:11px}.brand span:last-child{max-width:210px;overflow:hidden;text-overflow:ellipsis}.cover-card{width:min(70vw,330px)}.detail-title{font-size:clamp(42px,15vw,68px)}.drawer{width:100%}}
-  </style>
+  
+    .lyric-window::before{content:none!important;display:none!important;background:transparent!important}
+    .lyric-panel{background:transparent!important;box-shadow:none!important;backdrop-filter:none!important}
+    .lyric-window{background:transparent!important;box-shadow:none!important;backdrop-filter:none!important}
+
+    /* v0.6.4: synced lyrics replaces old lyric fragment caption */
+    .left-caption{display:none!important}
+
+    /* v0.6.5: floating synced lyrics, no panel background / no tinted box */
+    .lyric-panel{
+      background:transparent!important;
+      box-shadow:none!important;
+      backdrop-filter:none!important;
+      -webkit-backdrop-filter:none!important;
+      mix-blend-mode:normal!important;
+      pointer-events:none!important;
+    }
+    .lyric-window{
+      background:transparent!important;
+      box-shadow:none!important;
+      backdrop-filter:none!important;
+      -webkit-backdrop-filter:none!important;
+      border:none!important;
+      outline:none!important;
+      mask-image:none!important;
+      -webkit-mask-image:none!important;
+      overflow:hidden!important;
+    }
+    .lyric-window::before,
+    .lyric-window::after,
+    .lyric-panel::before,
+    .lyric-panel::after{
+      content:none!important;
+      display:none!important;
+      background:transparent!important;
+      box-shadow:none!important;
+      backdrop-filter:none!important;
+      -webkit-backdrop-filter:none!important;
+    }
+    .lyric-list{
+      background:transparent!important;
+      box-shadow:none!important;
+      backdrop-filter:none!important;
+      -webkit-backdrop-filter:none!important;
+      padding-top:120px!important;
+      padding-bottom:150px!important;
+    }
+    .lyric-row{
+      background:transparent!important;
+      box-shadow:none!important;
+      backdrop-filter:none!important;
+      -webkit-backdrop-filter:none!important;
+    }
+    .lyric-head,
+    .lyric-foot{
+      background:transparent!important;
+      box-shadow:none!important;
+      backdrop-filter:none!important;
+      -webkit-backdrop-filter:none!important;
+    }
+    .lyric-empty{
+      display:none!important;
+    }
+    .left-caption{
+      display:none!important;
+    }
+
+
+    /* v0.6.6: hard-disable old lyric fragment UI */
+    .lyric-line,
+    .lyric-note{
+      display:none!important;
+    }
+    .lyric-panel.show .lyric-line,
+    .lyric-panel.show .lyric-note{
+      display:none!important;
+    }
+
+</style>
 </head>
 <body>
 <div id="app" class="app">
@@ -997,56 +1071,41 @@
   }
 
 
-  function renderLyricPanel(){
-    if(!lyricPanel)return;
-    const album=albums[activeAlbum];
-    if(!album||!album.tracks||!album.tracks.length){
-      lyricPanel.classList.remove("show");
-      lyricPanel.innerHTML="";
-      return;
-    }
-    const track=getTrack(activeAlbum,0);
-    const raw=album.tracks[0];
-    const preview=(typeof raw==="object" && raw.lyricPreview) ? raw.lyricPreview : "";
-    const note=(typeof raw==="object" && raw.lyricsNote) ? raw.lyricsNote : "";
-    if(!preview){
-      lyricPanel.classList.remove("show");
-      lyricPanel.innerHTML="";
-      return;
-    }
-    lyricPanel.innerHTML=`
-      <div class="lyric-kicker">LYRIC FRAGMENT</div>
-      <p class="lyric-line">${esc(preview)}</p>
-      <div class="lyric-note">${esc(note||"歌词片段仅用于本地试听界面。")}</div>
-    `;
-    lyricPanel.classList.add("show");
+    function renderLyricPanel(){
+    // v0.6.6: legacy  panel disabled.
+    // Synchronized lyrics are rendered only by renderLyricsPanel().
+    return;
   }
 
 
-  function renderLyricsIdle(){
+    function renderLyricsIdle(){
     if(!lyricPanel||isPlaying)return;
-    const album=albums[activeAlbum];
-    const first=album&&album.tracks&&album.tracks.length?getTrack(activeAlbum,0):null;
-    const preview=first&&first.lyricPreview?first.lyricPreview:"选择一首歌后，左侧会显示同步歌词。";
-    lyricPanel.innerHTML=`
-      <div class="lyric-head">
-        <div class="lyric-kicker">LYRICS</div>
-        <div class="lyric-status">READY</div>
-      </div>
-      <div class="lyric-window">
-        <div class="lyric-list" style="--lyricY:0px">
-          <div class="lyric-row is-active">${esc(preview)}</div>
-        </div>
-      </div>
-      <div class="lyric-foot"><span class="lyric-dot"></span><span>${esc(album?album.title:"SELECT TRACK")}</span></div>
-    `;
+    lyricPanel.classList.remove("show");
+    lyricPanel.innerHTML="";
+  }
+
+
+  function keepPlayingLyricsVisible(){
+    if(isPlaying&&currentAlbum!==null&&currentTrack!==null&&currentLyrics&&currentLyrics.length){
+      const now=(audioPlayer&&audioPlayer.currentTime?audioPlayer.currentTime:0)+currentLyricsOffset;
+      requestAnimationFrame(()=>updateLyricsByTime(now,true));
+    }
+  }
+
+
+  function clearOldLyricFragment(){
+    document.querySelectorAll(".left-caption").forEach(el=>{
+      el.style.display="none";
+      el.innerHTML="";
+    });
   }
 
   function updateScene(){
     const a=albums[activeAlbum];
-    renderLyricsIdle();
+    clearOldLyricFragment();
+    if(!isPlaying)renderLyricsIdle();
     coverIndexesForFirstPaint().forEach(i=>albums[i]&&preloadImage(albums[i].cover));
-    renderLyricPanel();
+    if(isPlaying)keepPlayingLyricsVisible();
     app.style.setProperty("--c1",a.palette[0]);app.style.setProperty("--c2",a.palette[1]);app.style.setProperty("--c3",a.palette[2]);app.style.setProperty("--activeCover",`url("${a.cover}")`);
     updateRedMarquee(a,navDirection);
     // Singer name is placed under every red title unit inside the typography track.
@@ -1111,6 +1170,7 @@
   let currentLyrics=[];
   let currentLyricsOffset=0;
   let currentLyricIndex=-1;
+  let lyricLoadToken=0;
   let lyricTimer=null;
 
   function parseLrc(text){
@@ -1155,18 +1215,12 @@
 
   function renderLyricsPanel(lines,track){
     if(!lyricPanel)return;
+    lyricPanel.classList.remove("show");
     currentLyrics=Array.isArray(lines)?lines:[];
     currentLyricIndex=-1;
 
     if(!currentLyrics.length){
-      lyricPanel.innerHTML=`
-        <div class="lyric-head">
-          <div class="lyric-kicker">LYRICS</div>
-          <div class="lyric-status">NO LRC</div>
-        </div>
-        <div class="lyric-window"><div class="lyric-empty">这首歌还没有同步歌词。<br>可在 library.json 中添加 lyricsUrl。</div></div>
-        <div class="lyric-foot"><span class="lyric-dot"></span><span>${esc(track&&track.title?track.title:"NO TRACK")}</span></div>
-      `;
+      lyricPanel.innerHTML="";
       return;
     }
 
@@ -1186,10 +1240,15 @@
   }
 
   async function prepareLyrics(albumIndex,trackIndex){
+    const token=++lyricLoadToken;
     const track=getTrack(albumIndex,trackIndex);
     currentLyricsOffset=Number(track.lyricsOffset||0);
     const lines=await loadLyricsForTrack(track);
+    if(token!==lyricLoadToken)return;
     renderLyricsPanel(lines,track);
+    const now=(audioPlayer&&audioPlayer.currentTime?audioPlayer.currentTime:0)+currentLyricsOffset;
+    requestAnimationFrame(()=>updateLyricsByTime(now,true));
+    setTimeout(()=>updateLyricsByTime((audioPlayer&&audioPlayer.currentTime?audioPlayer.currentTime:0)+currentLyricsOffset,true),80);
   }
 
   function updateLyricsByTime(time,force=false){
@@ -1320,6 +1379,7 @@
       : `${track.title} · 未绑定 MP3，正在播放占位音色`;
     playBtn.textContent="Ⅱ";
     updateTrackState();
+    keepPlayingLyricsVisible();
   }
 
   function startPlaceholder(albumIndex,trackIndex){
