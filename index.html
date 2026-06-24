@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Masiwei Music Site — v0.6.6 Lyrics Fix</title>
+  <title>Masiwei Music Site — v0.7.1 Player Bugfix</title>
   <style>
     :root{
       --bg:#050505;--fg:#fff7ec;--muted:rgba(255,247,236,.62);--line:rgba(255,255,255,.16);
@@ -830,6 +830,7 @@
 
   let activeAlbum=0,currentAlbum=0,currentTrack=0,isPlaying=false,slideLocked=false,audioCtx=null,osc=null,gain=null,startedAt=0,progressTimer=null;
   let navDirection=1;
+  let playRequestToken=0;
   let currentRedTrack=null;
   let currentMarqueeState=null;
   let marqueeAnimations=[];
@@ -1160,7 +1161,7 @@
   function openDrawer(idx){
     const a=albums[idx];currentAlbum=idx;
     drawerHead.innerHTML=`<img class="drawer-thumb" src="${a.cover}" alt="${esc(a.title)}封面"><div class="drawer-title"><small>${esc(a.artist)} · ${esc(a.year)}</small><strong>${esc(a.title)}</strong></div><button class="close" id="closeDrawer" aria-label="关闭">×</button>`;
-    trackList.innerHTML=a.tracks.map((t,i)=>{const tr=getTrack(idx,i);return `<button class="track-item ${currentAlbum===idx&&currentTrack===i&&isPlaying?"playing":""}" data-play-track="${i}"><span class="num">${String(i+1).padStart(2,"0")}</span><span><span class="track-name">${esc(tr.title)}</span><span class="track-sub">${esc(a.title)} · ${tr.audio?"MP3 LINK":"NO MP3 LINK"}</span></span><span class="play-chip">▶</span></button>`}).join("");
+    trackList.innerHTML=a.tracks.map((t,i)=>{const tr=getTrack(idx,i);return `<button class="track-item ${currentAlbum===idx&&currentTrack===i&&isPlaying?"playing":""}" data-play-album="${idx}" data-play-track="${i}"><span class="num">${String(i+1).padStart(2,"0")}</span><span><span class="track-name">${esc(tr.title)}</span><span class="track-sub">${esc(a.title)} · ${tr.audio?"AUDIO READY":"NO AUDIO"}</span></span><span class="play-chip">${currentAlbum===idx&&currentTrack===i&&isPlaying?"Ⅱ":"▶"}</span></button>`}).join("");
     drawer.classList.add("open");drawerBackdrop.classList.add("open");drawer.setAttribute("aria-hidden","false");document.getElementById("closeDrawer").onclick=closeDrawer;
   }
   function closeDrawer(){drawer.classList.remove("open");drawerBackdrop.classList.remove("open");drawer.setAttribute("aria-hidden","true")}
@@ -1194,19 +1195,29 @@
 
   async function loadLyricsForTrack(track){
     if(!track)return [];
+
     if(track.lyricsUrl){
-      if(lyricCache.has(track.lyricsUrl))return lyricCache.get(track.lyricsUrl);
-      try{
-        const res=await fetch(track.lyricsUrl);
-        if(!res.ok)throw new Error(res.status);
-        const text=await res.text();
-        const parsed=parseLrc(text);
-        lyricCache.set(track.lyricsUrl,parsed);
-        return parsed;
-      }catch(err){
-        console.warn("lyrics load failed",err);
+      const rawUrl=String(track.lyricsUrl);
+      const encodedUrl=encodeURI(rawUrl);
+      const candidates=[rawUrl];
+      if(encodedUrl!==rawUrl)candidates.push(encodedUrl);
+
+      for(const url of candidates){
+        if(lyricCache.has(url))return lyricCache.get(url);
+        try{
+          const res=await fetch(url,{cache:"no-store"});
+          if(!res.ok)throw new Error(res.status);
+          const text=await res.text();
+          const parsed=parseLrc(text);
+          lyricCache.set(rawUrl,parsed);
+          lyricCache.set(url,parsed);
+          return parsed;
+        }catch(err){
+          console.warn("lyrics load failed",url,err);
+        }
       }
     }
+
     if(track.lyrics){
       return parseLrc(track.lyrics);
     }
@@ -1367,19 +1378,17 @@
     osc.start();
   }
 
-  function setPlayerUI(albumIndex,trackIndex,mode){
+  function setPlayerUI(albumIndex,trackIndex,mode="audio"){
     const album=albums[albumIndex];
     const track=getTrack(albumIndex,trackIndex);
 
     document.querySelector(".player").classList.add("is-active");
     playerArt.src=album.cover;
-    nowAlbum.textContent=`${album.title} · ${album.artist}`;
-    nowTrack.textContent=mode==="audio"
-      ? track.title
-      : `${track.title} · 未绑定 MP3，正在播放占位音色`;
-    playBtn.textContent="Ⅱ";
+    nowAlbum.textContent=`${album.title} · ${album.artist||""}`;
+    nowTrack.textContent=track.title;
+    playBtn.textContent=mode==="error"||mode==="missing"?"▶":"Ⅱ";
     updateTrackState();
-    keepPlayingLyricsVisible();
+    if(mode==="audio")keepPlayingLyricsVisible();
   }
 
   function startPlaceholder(albumIndex,trackIndex){
@@ -1387,42 +1396,57 @@
     if(!album||!album.tracks||!album.tracks.length)return;
 
     const track=getTrack(albumIndex,trackIndex);
+    const token=++playRequestToken;
 
     currentAlbum=albumIndex;
     currentTrack=trackIndex;
-    prepareLyrics(albumIndex,trackIndex);
-    startLyricTicker();
     isPlaying=true;
     startedAt=Date.now();
+
     progressBar.style.width="0%";
     currentTimeEl.textContent="0:00";
-    totalTimeEl.textContent="0:00";
+    totalTimeEl.textContent=formatTime(track.duration||0);
 
     stopTone();
     clearInterval(progressTimer);
+    stopAudioElement();
+    setPlayerUI(albumIndex,trackIndex,track.audio?"audio":"missing");
+    prepareLyrics(albumIndex,trackIndex);
+    startLyricTicker();
 
-    if(track.audio){
-      stopAudioElement();
-      audioPlayer.src=track.audio;
-      audioPlayer.currentTime=0;
-      setPlayerUI(albumIndex,trackIndex,"audio");
-
-      audioPlayer.play().then(()=>{
-        isPlaying=true;
-        playBtn.textContent="Ⅱ";
-      }).catch(()=>{
-        // 浏览器或路径失败时，自动退回占位音色，避免交互中断。
-        startToneFallback(albumIndex,trackIndex);
-        startProgress();
-        setPlayerUI(albumIndex,trackIndex,"fallback");
-      });
-    }else{
-      stopAudioElement();
-      startToneFallback(albumIndex,trackIndex);
-      startProgress();
-      setPlayerUI(albumIndex,trackIndex,"fallback");
+    if(!track.audio){
+      isPlaying=false;
+      playBtn.textContent="▶";
+      updateTrackState();
+      return;
     }
+
+    audioPlayer.src=track.audio;
+    audioPlayer.currentTime=0;
+
+    audioPlayer.play().then(()=>{
+      if(token!==playRequestToken)return;
+      isPlaying=true;
+      playBtn.textContent="Ⅱ";
+      setPlayerUI(albumIndex,trackIndex,"audio");
+      prepareLyrics(albumIndex,trackIndex);
+      startLyricTicker();
+      updateTrackState();
+    }).catch((err)=>{
+      if(token!==playRequestToken)return;
+      console.warn("audio play failed",track.audio,err);
+      isPlaying=false;
+      stopTone();
+      clearInterval(progressTimer);
+      setPlayerUI(albumIndex,trackIndex,"error");
+      nowTrack.textContent=track.title;
+      progressBar.style.width="0%";
+      currentTimeEl.textContent="0:00";
+      totalTimeEl.textContent=formatTime(track.duration||0);
+      updateTrackState();
+    });
   }
+
 
   function pause(){
     if(!isPlaying)return;
@@ -1445,12 +1469,21 @@
   function resume(){
     const track=getTrack(currentAlbum,currentTrack);
     if(track.audio&&audioPlayer&&audioPlayer.src){
+      const token=++playRequestToken;
       audioPlayer.play().then(()=>{
+        if(token!==playRequestToken)return;
         isPlaying=true;
         playBtn.textContent="Ⅱ";
         startLyricTicker();
         updateTrackState();
-      }).catch(()=>startPlaceholder(currentAlbum,currentTrack));
+      }).catch((err)=>{
+        if(token!==playRequestToken)return;
+        console.warn("audio resume failed",track.audio,err);
+        isPlaying=false;
+        playBtn.textContent="▶";
+        nowTrack.textContent=track.title;
+        updateTrackState();
+      });
     }else{
       startPlaceholder(currentAlbum,currentTrack);
     }
@@ -1487,7 +1520,8 @@
   function updateTrackState(){
     document.querySelectorAll(".track-item").forEach(item=>{
       const idx=Number(item.dataset.playTrack);
-      const playing=idx===currentTrack&&isPlaying;
+      const albumIdx=Number(item.dataset.playAlbum ?? currentAlbum);
+      const playing=albumIdx===currentAlbum&&idx===currentTrack&&isPlaying;
       item.classList.toggle("playing",playing);
       const chip=item.querySelector(".play-chip");
       if(chip)chip.textContent=playing?"Ⅱ":"▶";
@@ -1503,6 +1537,7 @@
     progressBar.style.width=(audioPlayer.currentTime/audioPlayer.duration*100)+"%";
     currentTimeEl.textContent=formatTime(audioPlayer.currentTime);
     totalTimeEl.textContent=formatTime(audioPlayer.duration);
+    updateLyricsByTime((audioPlayer.currentTime||0)+currentLyricsOffset);
   });
 
   audioPlayer.addEventListener("ended",()=>{
@@ -1514,6 +1549,9 @@
     playBtn.textContent="Ⅱ";
     stopTone();
     clearInterval(progressTimer);
+    const track=getTrack(currentAlbum,currentTrack);
+    nowTrack.textContent=track.title;
+    startLyricTicker();
     updateTrackState();
   });
 
@@ -1538,7 +1576,7 @@
   stage.addEventListener("touchmove",e=>e.preventDefault(),{passive:false});
   stage.addEventListener("touchend",e=>{const t=e.changedTouches[0],dy=t.clientY-touchStartY,dx=t.clientX-touchStartX;if(Math.abs(dy)>46&&Math.abs(dy)>Math.abs(dx))go(dy<0?1:-1)},{passive:true});
   document.addEventListener("click",e=>{
-    const track=e.target.closest("[data-play-track]");if(track){startPlaceholder(currentAlbum,Number(track.dataset.playTrack));return}
+    const track=e.target.closest("[data-play-track]");if(track){const albumIndex=Number(track.dataset.playAlbum ?? activeAlbum);startPlaceholder(albumIndex,Number(track.dataset.playTrack));return}
     const card=e.target.closest("[data-card]");if(card){const i=Number(card.dataset.card);i===activeAlbum?openDrawer(i):goTo(i);return}
     const dot=e.target.closest("[data-dot]");if(dot)goTo(Number(dot.dataset.dot));
   });

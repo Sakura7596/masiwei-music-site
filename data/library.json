@@ -4,7 +4,7 @@
     "brand": "Masiwei Rotating Archive",
     "artist": "马思唯",
     "artistDisplay": "MASIWEI",
-    "version": "0.7-final-batch-import-trimmed",
+    "version": "0.7.1-player-bugfix",
     "audioStorage": "Cloudflare R2",
     "r2BaseUrl": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev",
     "coverStorage": "local-webp-files",
