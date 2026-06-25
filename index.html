@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Masiwei Music Site — v0.7.1 Player Bugfix</title>
+  <title>Masiwei Music Site — v0.7.5 Player Tools Position</title>
   <style>
     :root{
       --bg:#050505;--fg:#fff7ec;--muted:rgba(255,247,236,.62);--line:rgba(255,255,255,.16);
@@ -678,6 +678,694 @@
       display:none!important;
     }
 
+
+    /* v0.7.2：播放栏右侧两个独立工具按钮，按参考图卡片风格 */
+    .player-tools{
+      position:fixed;
+      left:calc(50% + 394px);
+      bottom:18px;
+      z-index:171;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      opacity:0;
+      pointer-events:none;
+      transform:translateY(18px) scale(.94);
+      transition:opacity .25s ease, transform .28s ease;
+    }
+    .player.is-active + .player-tools{
+      opacity:1;
+      pointer-events:auto;
+      transform:translateY(0) scale(1);
+    }
+    .tool-card{
+      width:82px;
+      height:68px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.12);
+      background:
+        radial-gradient(circle at 75% 18%,rgba(98,31,30,.19),transparent 45%),
+        linear-gradient(145deg,rgba(255,255,255,.056),rgba(255,255,255,.024));
+      color:rgba(255,247,236,.72);
+      display:grid;
+      grid-template-rows:38px 14px;
+      place-items:center;
+      align-content:center;
+      gap:4px;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.035),
+        0 18px 46px rgba(0,0,0,.18);
+      cursor:pointer;
+      transition:border-color .18s ease,background .18s ease,color .18s ease,box-shadow .18s ease,transform .18s ease;
+    }
+    .tool-card:hover{
+      color:#fff7ec;
+      border-color:rgba(255,255,255,.20);
+      background:
+        radial-gradient(circle at 75% 18%,rgba(125,36,34,.25),transparent 46%),
+        linear-gradient(145deg,rgba(255,255,255,.076),rgba(255,255,255,.032));
+      transform:translateY(-1px);
+    }
+    .tool-card.is-active{
+      color:#fff7ec;
+      border-color:rgba(255,37,31,.58);
+      box-shadow:
+        0 0 0 1px rgba(255,37,31,.13),
+        0 0 30px rgba(255,37,31,.10),
+        inset 0 1px 0 rgba(255,255,255,.05);
+    }
+    .tool-icon{
+      width:34px;
+      height:34px;
+      border-radius:999px;
+      display:grid;
+      place-items:center;
+      position:relative;
+      border:1px solid rgba(255,255,255,.15);
+      background:rgba(255,255,255,.032);
+    }
+    .tool-icon::before{
+      content:"";
+      width:18px;
+      height:18px;
+      display:block;
+      background:currentColor;
+      mask-repeat:no-repeat;
+      mask-position:center;
+      mask-size:contain;
+      -webkit-mask-repeat:no-repeat;
+      -webkit-mask-position:center;
+      -webkit-mask-size:contain;
+    }
+    .tool-label{
+      color:rgba(255,247,236,.60);
+      font-size:12px;
+      line-height:1;
+      font-weight:700;
+      letter-spacing:.02em;
+    }
+    .tool-card:hover .tool-label,
+    .tool-card.is-active .tool-label{
+      color:rgba(255,247,236,.86);
+    }
+
+    .icon-order::before{
+      mask-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 8h10' stroke='black' stroke-width='1.9' stroke-linecap='round'/%3E%3Cpath d='M12 5l3.5 3-3.5 3' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 16h10' stroke='black' stroke-width='1.9' stroke-linecap='round'/%3E%3Cpath d='M15 13l3.5 3-3.5 3' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      -webkit-mask-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 8h10' stroke='black' stroke-width='1.9' stroke-linecap='round'/%3E%3Cpath d='M12 5l3.5 3-3.5 3' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 16h10' stroke='black' stroke-width='1.9' stroke-linecap='round'/%3E%3Cpath d='M15 13l3.5 3-3.5 3' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    }
+    .icon-loop::before{
+      mask-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17 4l4 4-4 4' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M3 11v-1c0-1.1.9-2 2-2h16' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round'/%3E%3Cpath d='M7 20l-4-4 4-4' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M21 13v1c0 1.1-.9 2-2 2H3' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round'/%3E%3C/svg%3E");
+      -webkit-mask-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17 4l4 4-4 4' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M3 11v-1c0-1.1.9-2 2-2h16' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round'/%3E%3Cpath d='M7 20l-4-4 4-4' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M21 13v1c0 1.1-.9 2-2 2H3' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round'/%3E%3C/svg%3E");
+    }
+    .icon-repeat-one::before{
+      mask-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17 4l4 4-4 4' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M3 11v-1c0-1.1.9-2 2-2h16' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round'/%3E%3Cpath d='M7 20l-4-4 4-4' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M21 13v1c0 1.1-.9 2-2 2H3' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round'/%3E%3Cpath d='M11.1 8.4v7.2' stroke='black' stroke-width='1.9' stroke-linecap='round'/%3E%3Cpath d='M9.7 9.8l1.4-1.4 1.4 1.4' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      -webkit-mask-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17 4l4 4-4 4' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M3 11v-1c0-1.1.9-2 2-2h16' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round'/%3E%3Cpath d='M7 20l-4-4 4-4' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M21 13v1c0 1.1-.9 2-2 2H3' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round'/%3E%3Cpath d='M11.1 8.4v7.2' stroke='black' stroke-width='1.9' stroke-linecap='round'/%3E%3Cpath d='M9.7 9.8l1.4-1.4 1.4 1.4' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    }
+    .icon-shuffle::before{
+      mask-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 7h3c3 0 4 10 7 10h6' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round'/%3E%3Cpath d='M17 14l3 3-3 3' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M4 17h3c1.4 0 2.3-1.1 3-2.4' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round'/%3E%3Cpath d='M14 7h6' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round'/%3E%3Cpath d='M17 4l3 3-3 3' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      -webkit-mask-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 7h3c3 0 4 10 7 10h6' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round'/%3E%3Cpath d='M17 14l3 3-3 3' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M4 17h3c1.4 0 2.3-1.1 3-2.4' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round'/%3E%3Cpath d='M14 7h6' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round'/%3E%3Cpath d='M17 4l3 3-3 3' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    }
+    .icon-volume::before{
+      mask-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 10v4h4l5 4V6l-5 4H4z' fill='none' stroke='black' stroke-width='1.9' stroke-linejoin='round'/%3E%3Cpath d='M16 9c1 .9 1.5 1.9 1.5 3s-.5 2.1-1.5 3' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round'/%3E%3C/svg%3E");
+      -webkit-mask-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 10v4h4l5 4V6l-5 4H4z' fill='none' stroke='black' stroke-width='1.9' stroke-linejoin='round'/%3E%3Cpath d='M16 9c1 .9 1.5 1.9 1.5 3s-.5 2.1-1.5 3' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round'/%3E%3C/svg%3E");
+    }
+    .icon-mute::before{
+      mask-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 10v4h4l5 4V6l-5 4H4z' fill='none' stroke='black' stroke-width='1.9' stroke-linejoin='round'/%3E%3Cpath d='M17.5 9.5l-4 5M13.5 9.5l4 5' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round'/%3E%3C/svg%3E");
+      -webkit-mask-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 10v4h4l5 4V6l-5 4H4z' fill='none' stroke='black' stroke-width='1.9' stroke-linejoin='round'/%3E%3Cpath d='M17.5 9.5l-4 5M13.5 9.5l4 5' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round'/%3E%3C/svg%3E");
+    }
+
+    .tool-popover{
+      position:absolute;
+      bottom:calc(100% + 12px);
+      right:0;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.13);
+      background:
+        radial-gradient(circle at 75% 18%,rgba(98,31,30,.16),transparent 44%),
+        rgba(10,10,10,.76);
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+      box-shadow:0 22px 58px rgba(0,0,0,.36);
+      opacity:0;
+      pointer-events:none;
+      transform:translateY(8px);
+      transition:opacity .18s ease,transform .18s ease;
+    }
+    .player-tools.mode-open .mode-popover,
+    .player-tools.volume-open .volume-popover{
+      opacity:1;
+      pointer-events:auto;
+      transform:translateY(0);
+    }
+    .mode-popover{
+      width:276px;
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:10px;
+      padding:12px;
+      right:94px;
+    }
+    .popover-card{
+      height:80px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.10);
+      background:linear-gradient(145deg,rgba(255,255,255,.052),rgba(255,255,255,.024));
+      color:rgba(255,247,236,.68);
+      display:grid;
+      grid-template-rows:40px 14px;
+      place-items:center;
+      align-content:center;
+      gap:5px;
+      cursor:pointer;
+      transition:.18s ease;
+      font-size:12px;
+      font-weight:700;
+    }
+    .popover-card:hover,
+    .popover-card.is-active{
+      color:#fff7ec;
+      border-color:rgba(255,37,31,.54);
+      background:linear-gradient(145deg,rgba(255,37,31,.10),rgba(255,255,255,.026));
+    }
+    .volume-popover{
+      width:252px;
+      padding:14px;
+    }
+    .volume-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:12px;
+      color:rgba(255,247,236,.66);
+      font-size:12px;
+      font-weight:750;
+    }
+    .volume-top strong{
+      color:#fff7ec;
+      font-size:14px;
+    }
+    .volume-range{
+      width:100%;
+      height:22px;
+      -webkit-appearance:none;
+      appearance:none;
+      background:transparent;
+      cursor:pointer;
+      margin:0 0 12px;
+    }
+    .volume-range:focus{outline:none}
+    .volume-range::-webkit-slider-runnable-track{
+      height:2px;
+      border-radius:999px;
+      background:linear-gradient(90deg,rgba(255,247,236,.82) var(--vol,80%),rgba(255,255,255,.15) var(--vol,80%));
+    }
+    .volume-range::-webkit-slider-thumb{
+      -webkit-appearance:none;
+      appearance:none;
+      width:9px;
+      height:9px;
+      margin-top:-3.5px;
+      border-radius:50%;
+      background:#fff7ec;
+      border:0;
+      box-shadow:0 0 12px rgba(255,247,236,.24);
+    }
+    .volume-range::-moz-range-track{
+      height:2px;
+      border-radius:999px;
+      background:rgba(255,255,255,.15);
+    }
+    .volume-range::-moz-range-progress{
+      height:2px;
+      border-radius:999px;
+      background:rgba(255,247,236,.82);
+    }
+    .volume-range::-moz-range-thumb{
+      width:9px;
+      height:9px;
+      border-radius:50%;
+      background:#fff7ec;
+      border:0;
+    }
+    .mute-toggle{
+      width:100%;
+      height:42px;
+      border-radius:13px;
+      border:1px solid rgba(255,255,255,.11);
+      background:rgba(255,255,255,.035);
+      color:rgba(255,247,236,.72);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:9px;
+      cursor:pointer;
+      font-weight:750;
+      transition:.18s ease;
+    }
+    .mute-toggle:hover,
+    .mute-toggle.is-active{
+      color:#fff7ec;
+      border-color:rgba(255,37,31,.54);
+      background:rgba(255,37,31,.08);
+    }
+    .mute-toggle .tool-icon{
+      width:28px;
+      height:28px;
+    }
+    .mute-toggle .tool-icon::before{
+      width:16px;
+      height:16px;
+    }
+
+    @media(max-width:1220px){
+      .player-tools{
+        left:auto;
+        right:18px;
+        bottom:104px;
+      }
+      .player.is-active + .player-tools{
+        transform:translateY(0) scale(.92);
+        transform-origin:right bottom;
+      }
+      .mode-popover{
+        right:0;
+      }
+    }
+    @media(max-width:850px){
+      .player-tools{
+        display:none;
+      }
+    }
+
+
+    /* v0.7.3：播放工具位置、尺寸、色彩微调 */
+    .player-tools{
+      left:calc(50% + 374px)!important;
+      bottom:22px!important;
+      gap:9px!important;
+      transform:translateY(14px) scale(.92)!important;
+    }
+    .player.is-active + .player-tools{
+      transform:translateY(0) scale(.92)!important;
+    }
+    .tool-card{
+      width:70px!important;
+      height:58px!important;
+      border-radius:14px!important;
+      grid-template-rows:31px 13px!important;
+      gap:3px!important;
+      border-color:rgba(255,255,255,.095)!important;
+      background:
+        radial-gradient(circle at 74% 18%,rgba(120,52,34,.105),transparent 44%),
+        linear-gradient(145deg,rgba(255,255,255,.043),rgba(255,255,255,.018))!important;
+      color:rgba(255,247,236,.62)!important;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.025),
+        0 14px 34px rgba(0,0,0,.14)!important;
+    }
+    .tool-card:hover{
+      color:rgba(255,247,236,.88)!important;
+      border-color:rgba(255,255,255,.165)!important;
+      background:
+        radial-gradient(circle at 74% 18%,rgba(135,65,42,.15),transparent 45%),
+        linear-gradient(145deg,rgba(255,255,255,.060),rgba(255,255,255,.024))!important;
+      transform:translateY(-1px)!important;
+    }
+    .tool-card.is-active{
+      color:rgba(255,247,236,.88)!important;
+      border-color:rgba(255,255,255,.18)!important;
+      background:
+        radial-gradient(circle at 74% 18%,rgba(180,54,42,.12),transparent 46%),
+        linear-gradient(145deg,rgba(255,255,255,.056),rgba(255,255,255,.022))!important;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.04),
+        0 0 18px rgba(180,54,42,.055)!important;
+    }
+    .mode-tool.is-active{
+      border-color:rgba(255,72,60,.26)!important;
+    }
+    .volume-tool.is-active{
+      border-color:rgba(255,255,255,.12)!important;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.025),
+        0 14px 34px rgba(0,0,0,.14)!important;
+    }
+    .tool-icon{
+      width:29px!important;
+      height:29px!important;
+      border-color:rgba(255,255,255,.125)!important;
+      background:rgba(255,255,255,.020)!important;
+    }
+    .tool-icon::before{
+      width:15.5px!important;
+      height:15.5px!important;
+    }
+    .tool-label{
+      font-size:11px!important;
+      font-weight:650!important;
+      color:rgba(255,247,236,.56)!important;
+    }
+    .tool-card:hover .tool-label,
+    .tool-card.is-active .tool-label{
+      color:rgba(255,247,236,.76)!important;
+    }
+    .tool-popover{
+      border-color:rgba(255,255,255,.115)!important;
+      background:
+        radial-gradient(circle at 75% 18%,rgba(98,31,30,.12),transparent 44%),
+        rgba(10,10,10,.72)!important;
+      box-shadow:0 18px 48px rgba(0,0,0,.32)!important;
+    }
+    .mode-popover{
+      right:78px!important;
+      width:246px!important;
+      gap:8px!important;
+      padding:10px!important;
+    }
+    .popover-card{
+      height:70px!important;
+      border-radius:14px!important;
+      grid-template-rows:34px 13px!important;
+      gap:4px!important;
+      font-size:11px!important;
+      border-color:rgba(255,255,255,.09)!important;
+      background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.018))!important;
+    }
+    .popover-card:hover,
+    .popover-card.is-active{
+      border-color:rgba(255,72,60,.35)!important;
+      background:linear-gradient(145deg,rgba(255,72,60,.075),rgba(255,255,255,.020))!important;
+    }
+    .volume-popover{
+      width:224px!important;
+      padding:12px!important;
+    }
+    .volume-top{
+      margin-bottom:10px!important;
+    }
+    .mute-toggle{
+      height:38px!important;
+      border-radius:12px!important;
+      border-color:rgba(255,255,255,.10)!important;
+      background:rgba(255,255,255,.028)!important;
+    }
+    .mute-toggle:hover,
+    .mute-toggle.is-active{
+      border-color:rgba(255,72,60,.32)!important;
+      background:rgba(255,72,60,.060)!important;
+    }
+    @media(max-width:1220px){
+      .player-tools{
+        right:16px!important;
+        bottom:108px!important;
+      }
+      .player.is-active + .player-tools{
+        transform:translateY(0) scale(.84)!important;
+      }
+    }
+
+
+    /* v0.7.4：播放工具极简化，适配原播放栏 */
+    .player-tools{
+      left:calc(50% + 372px)!important;
+      bottom:34px!important;
+      gap:8px!important;
+      transform:translateY(10px) scale(1)!important;
+    }
+    .player.is-active + .player-tools{
+      transform:translateY(0) scale(1)!important;
+    }
+
+    /* 两个主按钮：去掉大卡片，改成和播放栏左右切换接近的圆形图标按钮 */
+    .tool-card{
+      width:44px!important;
+      height:44px!important;
+      min-width:44px!important;
+      border-radius:999px!important;
+      grid-template-rows:1fr!important;
+      gap:0!important;
+      padding:0!important;
+      border:1px solid rgba(255,255,255,.115)!important;
+      background:rgba(15,15,15,.56)!important;
+      color:rgba(255,247,236,.68)!important;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.025),
+        0 10px 28px rgba(0,0,0,.16)!important;
+      backdrop-filter:blur(12px)!important;
+      -webkit-backdrop-filter:blur(12px)!important;
+    }
+    .tool-card:hover{
+      color:rgba(255,247,236,.90)!important;
+      border-color:rgba(255,255,255,.18)!important;
+      background:rgba(22,22,22,.66)!important;
+      transform:translateY(-1px)!important;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.035),
+        0 14px 32px rgba(0,0,0,.20)!important;
+    }
+    .tool-card.is-active,
+    .mode-tool.is-active,
+    .volume-tool.is-active{
+      color:rgba(255,247,236,.86)!important;
+      border-color:rgba(255,255,255,.16)!important;
+      background:rgba(18,18,18,.62)!important;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.030),
+        0 10px 28px rgba(0,0,0,.16)!important;
+    }
+    .mode-tool.is-active::after{
+      content:"";
+      position:absolute;
+      left:50%;
+      bottom:5px;
+      width:8px;
+      height:1px;
+      border-radius:999px;
+      background:rgba(255,247,236,.42);
+      transform:translateX(-50%);
+    }
+
+    /* 去掉内部圆圈，只保留图标，避免套娃边框 */
+    .tool-icon{
+      width:22px!important;
+      height:22px!important;
+      border:0!important;
+      background:transparent!important;
+    }
+    .tool-icon::before{
+      width:19px!important;
+      height:19px!important;
+    }
+
+    /* 去掉“随机 / 音量 / 57%”文字，按钮只显示图标 */
+    .tool-label,
+    #modeToolLabel,
+    #volumeToolLabel{
+      display:none!important;
+    }
+
+    /* 播放模式不再打开四选一菜单 */
+    .mode-popover{
+      display:none!important;
+    }
+    .player-tools.mode-open .mode-popover{
+      display:none!important;
+      opacity:0!important;
+      pointer-events:none!important;
+    }
+
+    /* 音量面板：只保留滑轨，不要静音按钮和百分比文字 */
+    .volume-popover{
+      width:170px!important;
+      height:42px!important;
+      padding:0 14px!important;
+      border-radius:999px!important;
+      right:0!important;
+      bottom:calc(100% + 10px)!important;
+      border-color:rgba(255,255,255,.105)!important;
+      background:rgba(10,10,10,.76)!important;
+      box-shadow:0 16px 44px rgba(0,0,0,.32)!important;
+    }
+    .volume-top,
+    .mute-toggle,
+    #muteToggleBtn,
+    #volumeValue{
+      display:none!important;
+    }
+    .volume-range{
+      width:100%!important;
+      height:22px!important;
+      margin:0!important;
+    }
+    .volume-range::-webkit-slider-runnable-track{
+      height:2px!important;
+      background:linear-gradient(90deg,rgba(255,247,236,.72) var(--vol,80%),rgba(255,255,255,.14) var(--vol,80%))!important;
+    }
+    .volume-range::-webkit-slider-thumb{
+      width:8px!important;
+      height:8px!important;
+      margin-top:-3px!important;
+      background:rgba(255,247,236,.92)!important;
+      box-shadow:0 0 10px rgba(255,247,236,.20)!important;
+    }
+    .volume-range::-moz-range-track{
+      height:2px!important;
+      background:rgba(255,255,255,.14)!important;
+    }
+    .volume-range::-moz-range-progress{
+      height:2px!important;
+      background:rgba(255,247,236,.72)!important;
+    }
+    .volume-range::-moz-range-thumb{
+      width:8px!important;
+      height:8px!important;
+      background:rgba(255,247,236,.92)!important;
+    }
+
+    /* 小屏保持不遮挡 */
+    @media(max-width:1220px){
+      .player-tools{
+        right:16px!important;
+        bottom:108px!important;
+        left:auto!important;
+      }
+      .player.is-active + .player-tools{
+        transform:translateY(0) scale(.92)!important;
+      }
+    }
+    @media(max-width:850px){
+      .player-tools{
+        display:none!important;
+      }
+    }
+
+
+    /* v0.7.5：工具按钮右移，音量浮层只保留滑轨并对齐音量按钮 */
+    .player-tools{
+      left:calc(50% + 438px)!important;
+      bottom:34px!important;
+      gap:8px!important;
+      transform:translateY(10px) scale(1)!important;
+    }
+    .player.is-active + .player-tools{
+      transform:translateY(0) scale(1)!important;
+    }
+
+    /* 维持小圆形按钮，不压住原播放器 */
+    .tool-card{
+      width:44px!important;
+      height:44px!important;
+      min-width:44px!important;
+    }
+
+    /* 音量浮层：直接在音量键正上方，只显示一条滑轨 */
+    .volume-popover{
+      right:0!important;
+      left:auto!important;
+      bottom:calc(100% + 9px)!important;
+      width:132px!important;
+      height:34px!important;
+      padding:0 13px!important;
+      border-radius:999px!important;
+      display:flex!important;
+      align-items:center!important;
+      justify-content:center!important;
+      background:rgba(9,9,9,.82)!important;
+      border:1px solid rgba(255,255,255,.105)!important;
+      box-shadow:0 14px 36px rgba(0,0,0,.34)!important;
+      backdrop-filter:blur(16px)!important;
+      -webkit-backdrop-filter:blur(16px)!important;
+    }
+    .volume-popover::after{
+      content:"";
+      position:absolute;
+      right:17px;
+      bottom:-5px;
+      width:9px;
+      height:9px;
+      transform:rotate(45deg);
+      background:rgba(9,9,9,.82);
+      border-right:1px solid rgba(255,255,255,.085);
+      border-bottom:1px solid rgba(255,255,255,.085);
+    }
+
+    /* 强制隐藏所有非滑轨内容，避免旧“音量”字样残留 */
+    .volume-popover > *:not(.volume-range),
+    .volume-title,
+    .volume-line,
+    .volume-top,
+    .mute-toggle,
+    #muteToggleBtn,
+    #volumeValue,
+    #muteToggleText{
+      display:none!important;
+    }
+    .volume-popover .volume-range{
+      display:block!important;
+    }
+
+    .volume-range{
+      width:100%!important;
+      height:20px!important;
+      margin:0!important;
+      padding:0!important;
+      -webkit-appearance:none!important;
+      appearance:none!important;
+      background:transparent!important;
+      cursor:pointer!important;
+      position:relative!important;
+      z-index:2!important;
+    }
+    .volume-range::-webkit-slider-runnable-track{
+      height:2px!important;
+      border-radius:999px!important;
+      background:linear-gradient(90deg,rgba(255,247,236,.72) var(--vol,80%),rgba(255,255,255,.14) var(--vol,80%))!important;
+    }
+    .volume-range::-webkit-slider-thumb{
+      -webkit-appearance:none!important;
+      appearance:none!important;
+      width:8px!important;
+      height:8px!important;
+      margin-top:-3px!important;
+      border-radius:50%!important;
+      background:rgba(255,247,236,.92)!important;
+      border:0!important;
+      box-shadow:0 0 10px rgba(255,247,236,.20)!important;
+    }
+    .volume-range::-moz-range-track{
+      height:2px!important;
+      border-radius:999px!important;
+      background:rgba(255,255,255,.14)!important;
+    }
+    .volume-range::-moz-range-progress{
+      height:2px!important;
+      border-radius:999px!important;
+      background:rgba(255,247,236,.72)!important;
+    }
+    .volume-range::-moz-range-thumb{
+      width:8px!important;
+      height:8px!important;
+      border-radius:50%!important;
+      background:rgba(255,247,236,.92)!important;
+      border:0!important;
+    }
+
+    @media(max-width:1280px){
+      .player-tools{
+        left:auto!important;
+        right:18px!important;
+        bottom:108px!important;
+      }
+      .player.is-active + .player-tools{
+        transform:translateY(0) scale(.92)!important;
+      }
+    }
+    @media(max-width:850px){
+      .player-tools{
+        display:none!important;
+      }
+    }
+
 </style>
 </head>
 <body>
@@ -716,6 +1404,42 @@
     <div class="controls"><button id="prevBtn" class="control" title="上一首">‹</button><button id="playBtn" class="control main" title="播放/暂停">▶</button><button id="nextBtn" class="control" title="下一首">›</button></div>
     <audio id="audioPlayer" preload="metadata"></audio>
   </section>
+
+  <section id="playerTools" class="player-tools" aria-label="播放工具">
+    <button id="modeToolBtn" class="tool-card mode-tool" title="播放模式" aria-label="播放模式">
+      <span id="modeToolIcon" class="tool-icon icon-order" aria-hidden="true"></span>
+      <span id="modeToolLabel" class="tool-label">顺序</span>
+    </button>
+
+    <button id="volumeToolBtn" class="tool-card volume-tool" title="音量" aria-label="音量">
+      <span id="volumeToolIcon" class="tool-icon icon-volume" aria-hidden="true"></span>
+      <span id="volumeToolLabel" class="tool-label">音量</span>
+    </button>
+
+    <div id="modePanel" class="tool-popover mode-popover" aria-label="播放模式设置">
+      <button class="popover-card" data-play-mode="order" title="顺序播放" aria-label="顺序播放">
+        <span class="tool-icon icon-order" aria-hidden="true"></span>
+        <span>顺序</span>
+      </button>
+      <button class="popover-card" data-play-mode="loop" title="列表循环" aria-label="列表循环">
+        <span class="tool-icon icon-loop" aria-hidden="true"></span>
+        <span>循环</span>
+      </button>
+      <button class="popover-card" data-play-mode="one" title="单曲循环" aria-label="单曲循环">
+        <span class="tool-icon icon-repeat-one" aria-hidden="true"></span>
+        <span>单曲</span>
+      </button>
+      <button class="popover-card" data-play-mode="shuffle" title="随机播放" aria-label="随机播放">
+        <span class="tool-icon icon-shuffle" aria-hidden="true"></span>
+        <span>随机</span>
+      </button>
+    </div>
+
+    <div id="volumePanel" class="tool-popover volume-popover" aria-label="音量设置">
+      <input id="volumeRange" class="volume-range" type="range" min="0" max="100" value="80" aria-label="音量大小" />
+    </div>
+  </section>
+
 </div>
 
 <script>
@@ -831,6 +1555,21 @@
   let activeAlbum=0,currentAlbum=0,currentTrack=0,isPlaying=false,slideLocked=false,audioCtx=null,osc=null,gain=null,startedAt=0,progressTimer=null;
   let navDirection=1;
   let playRequestToken=0;
+
+  const PLAY_MODES=["order","loop","one","shuffle"];
+  const PLAY_MODE_META={
+    order:{label:"顺序",icon:"icon-order"},
+    loop:{label:"循环",icon:"icon-loop"},
+    one:{label:"单曲",icon:"icon-repeat-one"},
+    shuffle:{label:"随机",icon:"icon-shuffle"}
+  };
+  let playMode=localStorage.getItem("msw-play-mode")||"order";
+  if(!PLAY_MODES.includes(playMode))playMode="order";
+  let savedVolume=Number(localStorage.getItem("msw-volume")||.8);
+  if(!Number.isFinite(savedVolume))savedVolume=.8;
+  savedVolume=Math.max(0,Math.min(1,savedVolume));
+  let volumeBeforeMute=Number(localStorage.getItem("msw-volume-before-mute")||savedVolume||.8);
+  let isMuted=localStorage.getItem("msw-muted")==="1";
   let currentRedTrack=null;
   let currentMarqueeState=null;
   let marqueeAnimations=[];
@@ -1378,6 +2117,137 @@
     osc.start();
   }
 
+
+  function updatePlayerToolUI(){
+    const tools=document.getElementById("playerTools");
+    const modeBtn=document.getElementById("modeToolBtn");
+    const modeIcon=document.getElementById("modeToolIcon");
+    const modeLabel=document.getElementById("modeToolLabel");
+    const volumeBtn=document.getElementById("volumeToolBtn");
+    const volumeIcon=document.getElementById("volumeToolIcon");
+    const volumeLabel=document.getElementById("volumeToolLabel");
+    const volumeRange=document.getElementById("volumeRange");
+    const volumeValue=document.getElementById("volumeValue");
+    const muteToggle=document.getElementById("muteToggleBtn");
+    const muteText=document.getElementById("muteToggleText");
+    const meta=PLAY_MODE_META[playMode]||PLAY_MODE_META.order;
+
+    if(modeIcon){
+      modeIcon.className=`tool-icon ${meta.icon}`;
+    }
+    if(modeLabel)modeLabel.textContent=meta.label;
+    if(modeBtn){
+      modeBtn.classList.toggle("is-active",playMode!=="order");
+      modeBtn.title=`播放模式：${meta.label}`;
+    }
+
+    document.querySelectorAll("[data-play-mode]").forEach(btn=>{
+      btn.classList.toggle("is-active",btn.dataset.playMode===playMode);
+    });
+
+    const percent=Math.round(savedVolume*100);
+    if(volumeRange){
+      volumeRange.value=String(percent);
+      volumeRange.style.setProperty("--vol",`${percent}%`);
+    }
+    if(volumeValue)volumeValue.textContent=`${isMuted?0:percent}%`;
+    if(volumeLabel)volumeLabel.textContent=isMuted?"静音":`${percent}%`;
+    if(volumeIcon){
+      volumeIcon.className=`tool-icon ${isMuted||savedVolume===0?"icon-mute":"icon-volume"}`;
+    }
+    if(volumeBtn){
+      volumeBtn.classList.toggle("is-active",!isMuted&&savedVolume>0);
+      volumeBtn.title=isMuted?"已静音":"音量";
+    }
+    if(muteToggle){
+      muteToggle.classList.toggle("is-active",isMuted);
+    }
+    if(muteText)muteText.textContent=isMuted?"取消静音":"静音";
+    if(audioPlayer){
+      audioPlayer.volume=isMuted?0:savedVolume;
+      audioPlayer.muted=isMuted;
+    }
+  }
+
+  function setPlayMode(mode){
+    if(!PLAY_MODES.includes(mode))mode="order";
+    playMode=mode;
+    localStorage.setItem("msw-play-mode",playMode);
+    updatePlayerToolUI();
+  }
+
+  function setSiteVolume(value){
+    savedVolume=Math.max(0,Math.min(1,Number(value)||0));
+    if(savedVolume>0){
+      volumeBeforeMute=savedVolume;
+      isMuted=false;
+    }else{
+      isMuted=true;
+    }
+    localStorage.setItem("msw-volume",String(savedVolume));
+    localStorage.setItem("msw-volume-before-mute",String(volumeBeforeMute||.8));
+    localStorage.setItem("msw-muted",isMuted?"1":"0");
+    updatePlayerToolUI();
+  }
+
+  function toggleSiteMute(){
+    if(isMuted||savedVolume===0){
+      isMuted=false;
+      savedVolume=volumeBeforeMute>0?volumeBeforeMute:.8;
+    }else{
+      volumeBeforeMute=savedVolume;
+      isMuted=true;
+    }
+    localStorage.setItem("msw-volume",String(savedVolume));
+    localStorage.setItem("msw-volume-before-mute",String(volumeBeforeMute||.8));
+    localStorage.setItem("msw-muted",isMuted?"1":"0");
+    updatePlayerToolUI();
+  }
+
+  function getNextTrackIndex(step=1,reason="manual"){
+    const album=albums[currentAlbum];
+    if(!album||!album.tracks||!album.tracks.length)return null;
+    const len=album.tracks.length;
+
+    if(reason==="ended"&&playMode==="one")return currentTrack;
+
+    if(playMode==="shuffle"){
+      if(len<=1)return currentTrack;
+      let next=currentTrack;
+      let guard=0;
+      while(next===currentTrack&&guard<12){
+        next=Math.floor(Math.random()*len);
+        guard++;
+      }
+      return next;
+    }
+
+    const next=currentTrack+step;
+
+    if(next>=len){
+      if(playMode==="loop")return 0;
+      if(reason==="ended"&&playMode==="order")return null;
+      return 0;
+    }
+    if(next<0){
+      if(playMode==="loop")return len-1;
+      return 0;
+    }
+    return next;
+  }
+
+  function finishQueue(){
+    isPlaying=false;
+    playBtn.textContent="▶";
+    updateTrackState();
+    clearInterval(progressTimer);
+    if(audioPlayer&&audioPlayer.duration){
+      progressBar.style.width="100%";
+      currentTimeEl.textContent=formatTime(audioPlayer.duration);
+      totalTimeEl.textContent=formatTime(audioPlayer.duration);
+    }
+  }
+
   function setPlayerUI(albumIndex,trackIndex,mode="audio"){
     const album=albums[albumIndex];
     const track=getTrack(albumIndex,trackIndex);
@@ -1423,6 +2293,7 @@
 
     audioPlayer.src=track.audio;
     audioPlayer.currentTime=0;
+    updatePlayerToolUI();
 
     audioPlayer.play().then(()=>{
       if(token!==playRequestToken)return;
@@ -1501,20 +2372,20 @@
       progressBar.style.width=pct+"%";
       currentTimeEl.textContent=formatTime(elapsed);
       totalTimeEl.textContent="0:18";
-      if(pct>=100)nextTrack();
+      if(pct>=100)nextTrack("ended");
     },80);
   }
 
-  function nextTrack(){
-    const album=albums[currentAlbum];
-    if(!album||!album.tracks||!album.tracks.length)return;
-    startPlaceholder(currentAlbum,(currentTrack+1)%album.tracks.length);
+  function nextTrack(reason="manual"){
+    const next=getNextTrackIndex(1,reason);
+    if(next===null){finishQueue();return}
+    startPlaceholder(currentAlbum,next);
   }
 
   function prevTrack(){
-    const album=albums[currentAlbum];
-    if(!album||!album.tracks||!album.tracks.length)return;
-    startPlaceholder(currentAlbum,(currentTrack-1+album.tracks.length)%album.tracks.length);
+    const next=getNextTrackIndex(-1,"manual");
+    if(next===null)return;
+    startPlaceholder(currentAlbum,next);
   }
 
   function updateTrackState(){
@@ -1541,7 +2412,7 @@
   });
 
   audioPlayer.addEventListener("ended",()=>{
-    nextTrack();
+    nextTrack("ended");
   });
 
   audioPlayer.addEventListener("play",()=>{
@@ -1567,6 +2438,50 @@
     const rect=progress.getBoundingClientRect();
     const ratio=Math.max(0,Math.min(1,(e.clientX-rect.left)/rect.width));
     audioPlayer.currentTime=ratio*audioPlayer.duration;
+  });
+
+
+  updatePlayerToolUI();
+
+  const playerTools=document.getElementById("playerTools");
+  const modeToolBtn=document.getElementById("modeToolBtn");
+  const volumeToolBtn=document.getElementById("volumeToolBtn");
+  const volumeRange=document.getElementById("volumeRange");
+    if(modeToolBtn){
+    modeToolBtn.addEventListener("click",e=>{
+      e.stopPropagation();
+      const idx=PLAY_MODES.indexOf(playMode);
+      setPlayMode(PLAY_MODES[(idx+1)%PLAY_MODES.length]);
+      playerTools.classList.remove("mode-open");
+      playerTools.classList.remove("volume-open");
+    });
+  }
+  if(volumeToolBtn){
+    volumeToolBtn.addEventListener("click",e=>{
+      e.stopPropagation();
+      playerTools.classList.toggle("volume-open");
+      playerTools.classList.remove("mode-open");
+    });
+  }
+  document.querySelectorAll("[data-play-mode]").forEach(btn=>{
+    btn.addEventListener("click",e=>{
+      e.stopPropagation();
+      setPlayMode(btn.dataset.playMode);
+      playerTools.classList.remove("mode-open");
+    });
+  });
+  if(volumeRange){
+    volumeRange.addEventListener("input",e=>setSiteVolume(Number(e.target.value)/100));
+    volumeRange.addEventListener("click",e=>e.stopPropagation());
+  }
+  if(playerTools){
+    playerTools.addEventListener("click",e=>e.stopPropagation());
+  }
+  document.addEventListener("click",()=>{
+    if(playerTools){
+      playerTools.classList.remove("mode-open");
+      playerTools.classList.remove("volume-open");
+    }
   });
 
   loadLibrary();
