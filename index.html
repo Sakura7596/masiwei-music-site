@@ -44,6 +44,7 @@
       padding:18px clamp(18px,3vw,42px);color:rgba(255,255,255,.88);text-shadow:0 2px 18px rgba(0,0,0,.46);pointer-events:none
     }
     .brand{pointer-events:none;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:950;letter-spacing:-.01em;white-space:nowrap}
+    .brand-btn-text{pointer-events:auto;cursor:pointer;background:none;border:0;color:inherit;font:inherit;font-size:13px;font-weight:850;letter-spacing:.02em;white-space:nowrap;opacity:.74;transition:.2s;display:flex;align-items:center;gap:10px}.brand-btn-text:hover{opacity:1;transform:translateY(-1px)}
     .brand-mark{width:30px;height:30px;display:grid;place-items:center;border-radius:50%;background:var(--fg);color:#050505;font-weight:1000}
     .top-actions{pointer-events:auto;display:flex;align-items:center;gap:24px;font-size:13px;font-weight:850;white-space:nowrap}
     .top-actions button{opacity:.74;transition:.2s}.top-actions button:hover{opacity:1;transform:translateY(-1px)}
@@ -599,7 +600,7 @@
     .controls{display:flex;gap:6px;align-items:center}.control{width:38px;height:38px;display:grid;place-items:center;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);font-weight:1000}.control.main{background:#fff;color:#050505;border-color:transparent}
     @media(max-width:1050px){.cover-card{width:min(47vh,54vw,430px)}.detail-panel{right:22px;width:min(320px,32vw)}.red-unit .word{font-size:clamp(84px,18vw,190px)}.red-unit .artist-under{font-size:clamp(22px,6vw,40px)}}
     @media(max-width:850px){.top-actions button:nth-child(2),.top-actions button:nth-child(3){display:none}.cover-card{width:min(42vh,72vw,390px)}.detail-panel{left:18px;right:18px;top:auto;bottom:126px;width:auto;transform:none;text-align:center;place-items:center}.album-meta,.detail-actions{justify-content:center}.detail-panel::before{inset:-24px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.42))}.detail-title{justify-items:center}.track-preview,.left-caption,.dots,.lyric-panel{display:none}.script-sign{font-size:clamp(72px,19vw,132px);top:43%}.red-track{top:38%}.player{width:calc(100% - 24px);bottom:12px;border-radius:22px;grid-template-columns:44px 1fr}.controls{grid-column:1/-1;justify-content:center}}
-    @media(max-width:560px){.topbar{padding:14px;font-size:11px}.brand span:last-child{max-width:210px;overflow:hidden;text-overflow:ellipsis}.cover-card{width:min(70vw,330px)}.detail-title{font-size:clamp(42px,15vw,68px)}.drawer{width:100%}}
+    @media(max-width:560px){.topbar{padding:14px;font-size:11px}.brand-btn-text{max-width:210px;overflow:hidden;text-overflow:ellipsis}.cover-card{width:min(70vw,330px)}.detail-title{font-size:clamp(42px,15vw,68px)}.drawer{width:100%}}
   
     .lyric-window::before{content:none!important;display:none!important;background:transparent!important}
     .lyric-panel{background:transparent!important;box-shadow:none!important;backdrop-filter:none!important}
@@ -1366,6 +1367,34 @@
       }
     }
 
+    /* 专辑选择面板 */
+    .album-drawer{
+      left:0;right:auto;
+      transform:translateX(-105%);
+      border-right:1px solid rgba(255,255,255,.16);
+      border-left:none;
+      box-shadow:42px 0 120px rgba(0,0,0,.6);
+    }
+    .album-drawer.open{transform:translateX(0)}
+    .album-drawer-list{padding:10px 14px 128px}
+    .album-item{
+      width:100%;display:grid;grid-template-columns:56px 1fr auto;align-items:center;gap:12px;
+      padding:14px 12px;border-radius:16px;text-align:left;
+      color:rgba(255,255,255,.86);transition:.18s;cursor:pointer;
+    }
+    .album-item:hover{background:rgba(255,255,255,.09);transform:translateX(2px)}
+    .album-item.current{background:rgba(255,255,255,.16);box-shadow:inset 3px 0 0 var(--red)}
+    .album-item img{
+      width:56px;height:56px;border-radius:10px;object-fit:cover;
+      border:1px solid rgba(255,255,255,.18);background:#111;
+    }
+    .album-info{min-width:0}
+    .album-info strong{display:block;font-weight:900;letter-spacing:-.02em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .album-info span{display:block;margin-top:4px;color:rgba(255,255,255,.44);font-size:12px}
+    .album-badge{
+      font-size:10px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;
+      color:rgba(255,255,255,.42);white-space:nowrap;
+    }
 </style>
 </head>
 <body>
@@ -1373,7 +1402,7 @@
   <div id="siteLoader" class="site-loader"><div class="loader-inner"><div class="loader-mark">M</div><div class="loader-text">Loading covers</div></div></div>
   <div class="texture"></div>
   <header class="topbar">
-    <div class="brand"><span class="brand-mark">M</span><span>Masiwei Rotating Archive</span></div>
+    <button id="brandBtn" class="brand-btn-text"><span class="brand-mark">M</span>MASIWEI ALBUMS</button>
     <div class="top-actions"><button id="jumpTrack">TRACKS</button><button id="jumpPlay">PLAY</button><button id="jumpNext">NEXT</button></div>
   </header>
 
@@ -1397,6 +1426,15 @@
   <nav id="dots" class="dots" aria-label="专辑导航"></nav>
   <div id="drawerBackdrop" class="drawer-backdrop"></div>
   <aside id="drawer" class="drawer" aria-label="专辑歌单" aria-hidden="true"><div id="drawerHead" class="drawer-head"></div><div id="trackList" class="track-list"></div></aside>
+
+  <div id="albumDrawerBackdrop" class="drawer-backdrop"></div>
+  <aside id="albumDrawer" class="drawer album-drawer" aria-label="专辑列表" aria-hidden="true">
+    <div class="drawer-head">
+      <div class="drawer-title"><small>MASIWEI ROTATING ARCHIVE</small><strong>ALL ALBUMS</strong></div>
+      <button class="close" id="closeAlbumDrawer" aria-label="关闭">×</button>
+    </div>
+    <div id="albumDrawerList" class="track-list album-drawer-list"></div>
+  </aside>
 
   <section class="player" aria-label="占位播放器">
     <img id="playerArt" class="player-art" alt="" />
@@ -1464,7 +1502,7 @@
 
       if(libraryData.site){
         document.title=libraryData.site.title||document.title;
-        const brand=document.querySelector(".brand span:last-child");
+        const brand=document.querySelector(".brand-btn-text");
         if(brand&&libraryData.site.brand) brand.textContent=libraryData.site.brand;
       }
 
@@ -1548,7 +1586,7 @@
   }
 
   const app=document.getElementById("app"),stage=document.getElementById("stage"),gallery=document.getElementById("gallery"),redMarquee=document.getElementById("redMarquee"),scriptSign=document.getElementById("scriptSign"),lyricPanel=document.getElementById("lyricPanel"),albumMeta=document.getElementById("albumMeta"),detailTitle=document.getElementById("detailTitle"),detailArtist=document.getElementById("detailArtist"),trackPreview=document.getElementById("trackPreview"),serial={textContent:""},dots=document.getElementById("dots");
-  const detailTracks=document.getElementById("detailTracks"),detailPlay=document.getElementById("detailPlay"),jumpTrack=document.getElementById("jumpTrack"),jumpPlay=document.getElementById("jumpPlay"),jumpNext=document.getElementById("jumpNext");
+  const detailTracks=document.getElementById("detailTracks"),detailPlay=document.getElementById("detailPlay"),jumpTrack=document.getElementById("jumpTrack"),jumpPlay=document.getElementById("jumpPlay"),jumpNext=document.getElementById("jumpNext"),brandBtn=document.querySelector(".brand-btn-text");
   const drawer=document.getElementById("drawer"),drawerBackdrop=document.getElementById("drawerBackdrop"),drawerHead=document.getElementById("drawerHead"),trackList=document.getElementById("trackList");
   const playerArt=document.getElementById("playerArt"),nowAlbum=document.getElementById("nowAlbum"),nowTrack=document.getElementById("nowTrack"),progressBar=document.getElementById("progressBar"),progress=document.getElementById("progress"),currentTimeEl=document.getElementById("currentTime"),totalTimeEl=document.getElementById("totalTime"),audioPlayer=document.getElementById("audioPlayer"),playBtn=document.getElementById("playBtn"),prevBtn=document.getElementById("prevBtn"),nextBtn=document.getElementById("nextBtn");
 
@@ -1904,6 +1942,17 @@
     drawer.classList.add("open");drawerBackdrop.classList.add("open");drawer.setAttribute("aria-hidden","false");document.getElementById("closeDrawer").onclick=closeDrawer;
   }
   function closeDrawer(){drawer.classList.remove("open");drawerBackdrop.classList.remove("open");drawer.setAttribute("aria-hidden","true")}
+
+  const albumDrawer=document.getElementById("albumDrawer");
+  const albumDrawerBackdrop=document.getElementById("albumDrawerBackdrop");
+  const albumDrawerList=document.getElementById("albumDrawerList");
+
+  function openAlbumDrawer(){
+    albumDrawerList.innerHTML=albums.map((a,i)=>`<button class="album-item ${i===activeAlbum?"current":""}" data-album-jump="${i}"><img src="${a.cover}" alt="${esc(a.title)}"><div class="album-info"><strong>${esc(a.displayTitle||a.title)}</strong><span>${esc(a.artistDisplay||a.artist||"")} · ${esc(a.year)}</span></div><span class="album-badge">${a.tracks.length} tracks</span></button>`).join("");
+    albumDrawer.classList.add("open");albumDrawerBackdrop.classList.add("open");albumDrawer.setAttribute("aria-hidden","false");
+    document.getElementById("closeAlbumDrawer").onclick=closeAlbumDrawer;
+  }
+  function closeAlbumDrawer(){albumDrawer.classList.remove("open");albumDrawerBackdrop.classList.remove("open");albumDrawer.setAttribute("aria-hidden","true")}
 
 
   let lyricCache=new Map();
@@ -2494,10 +2543,11 @@
     const track=e.target.closest("[data-play-track]");if(track){const albumIndex=Number(track.dataset.playAlbum ?? activeAlbum);startPlaceholder(albumIndex,Number(track.dataset.playTrack));return}
     const card=e.target.closest("[data-card]");if(card){const i=Number(card.dataset.card);i===activeAlbum?openDrawer(i):goTo(i);return}
     const dot=e.target.closest("[data-dot]");if(dot)goTo(Number(dot.dataset.dot));
+    const albumJump=e.target.closest("[data-album-jump]");if(albumJump){const i=Number(albumJump.dataset.albumJump);closeAlbumDrawer();goTo(i);return}
   });
-  if(detailTracks) detailTracks.onclick=()=>openDrawer(activeAlbum);detailPlay.onclick=()=>startPlaceholder(activeAlbum,0);jumpTrack.onclick=()=>openDrawer(activeAlbum);jumpPlay.onclick=()=>startPlaceholder(activeAlbum,0);jumpNext.onclick=()=>go(1);
-  drawerBackdrop.onclick=closeDrawer;playBtn.onclick=toggle;nextBtn.onclick=nextTrack;prevBtn.onclick=prevTrack;
-  document.addEventListener("keydown",e=>{if(e.key==="Escape")closeDrawer();if(e.key===" "){e.preventDefault();toggle()}if(e.key==="ArrowDown"||e.key==="PageDown"){e.preventDefault();go(1)}if(e.key==="ArrowUp"||e.key==="PageUp"){e.preventDefault();go(-1)}if(e.key==="Enter")openDrawer(activeAlbum)});
+  if(detailTracks) detailTracks.onclick=()=>openDrawer(activeAlbum);detailPlay.onclick=()=>startPlaceholder(activeAlbum,0);jumpTrack.onclick=()=>openDrawer(activeAlbum);jumpPlay.onclick=()=>startPlaceholder(activeAlbum,0);jumpNext.onclick=()=>go(1);brandBtn.onclick=()=>openAlbumDrawer();
+  drawerBackdrop.onclick=closeDrawer;albumDrawerBackdrop.onclick=closeAlbumDrawer;playBtn.onclick=toggle;nextBtn.onclick=nextTrack;prevBtn.onclick=prevTrack;
+  document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeDrawer();closeAlbumDrawer()}if(e.key===" "){e.preventDefault();toggle()}if(e.key==="ArrowDown"||e.key==="PageDown"){e.preventDefault();go(1)}if(e.key==="ArrowUp"||e.key==="PageUp"){e.preventDefault();go(-1)}if(e.key==="Enter")openDrawer(activeAlbum)});
 </script>
 </body>
 </html>
