@@ -1,7 +1,7 @@
 {
   "site": {
     "title": "Masiwei Rotating Archive",
-    "brand": "Masiwei Rotating Archive",
+    "brand": "MASIWEI ALBUMS",
     "artist": "马思唯",
     "artistDisplay": "MASIWEI",
     "version": "0.7.1-player-bugfix",
@@ -1080,6 +1080,873 @@
           "lyricsUrl": "./lyrics/randb-all-night-masiwei-remix/randb-all-night-masiwei-remix.lrc",
           "lyricsFormat": "lrc",
           "lyricsOffset": 0.45,
+          "lyrics": ""
+        }
+      ],
+      "coverStatus": "external-webp"
+    },
+    {
+      "title": "最高",
+      "displayTitle": "最高",
+      "artist": "Higher Brothers / 马思唯",
+      "artistDisplay": "Higher Brothers",
+      "year": "2023",
+      "type": "Album",
+      "cover": "./covers/09-zuigao.webp",
+      "palette": [
+        "#060606",
+        "#2d3629",
+        "#f0dfc3"
+      ],
+      "tracks": [
+        {
+          "title": "人先出来",
+          "artist": "Higher Brothers / 马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E6%9C%80%E9%AB%98/01-%E4%BA%BA%E5%85%88%E5%87%BA%E6%9D%A5.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/最高/人先出来.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "Highest",
+          "artist": "Higher Brothers / 马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E6%9C%80%E9%AB%98/02-Highest.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/最高/Highest.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "1 On 1",
+          "artist": "Higher Brothers / 马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E6%9C%80%E9%AB%98/03-1%20On%201.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/最高/1 On 1.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "How High Can We Reach",
+          "artist": "Higher Brothers / 马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E6%9C%80%E9%AB%98/04-How%20High%20Can%20We%20Reach.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/最高/How High Can We Reach.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        }
+      ],
+      "coverStatus": "external-webp"
+    },
+    {
+      "title": "冠军情歌",
+      "displayTitle": "冠军情歌",
+      "artist": "马思唯",
+      "artistDisplay": "Masiwei",
+      "year": "2023",
+      "type": "EP",
+      "cover": "./covers/10-guanjun-qingge.webp",
+      "palette": [
+        "#060606",
+        "#2d3629",
+        "#f0dfc3"
+      ],
+      "tracks": [
+        {
+          "title": "冠军情歌 (feat. 罗言)",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E5%86%A0%E5%86%9B%E6%83%85%E6%AD%8C/01-%E5%86%A0%E5%86%9B%E6%83%85%E6%AD%8C%20(feat.%20%E7%BD%97%E8%A8%80).mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/冠军情歌/冠军情歌 (feat. 罗言).lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "深蓝色太平洋",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E5%86%A0%E5%86%9B%E6%83%85%E6%AD%8C/02-%E6%B7%B1%E8%93%9D%E8%89%B2%E5%A4%AA%E5%B9%B3%E6%B4%8B.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/冠军情歌/深蓝色太平洋.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "Shawty",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E5%86%A0%E5%86%9B%E6%83%85%E6%AD%8C/03-Shawty.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/冠军情歌/Shawty.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "明天 (feat. 袁娅维TIA RAY)",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E5%86%A0%E5%86%9B%E6%83%85%E6%AD%8C/04-%E6%98%8E%E5%A4%A9%20(feat.%20%E8%A2%81%E5%A8%85%E7%BB%B4TIA%20RAY).mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/冠军情歌/明天 (feat. 袁娅维TIA RAY).lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        }
+      ],
+      "coverStatus": "external-webp"
+    },
+    {
+      "title": "乐透人生GT：即刻入戏",
+      "displayTitle": "乐透人生GT",
+      "artist": "马思唯",
+      "artistDisplay": "Masiwei",
+      "year": "2024",
+      "type": "Album",
+      "cover": "./covers/11-letourensheng-gt.webp",
+      "palette": [
+        "#060606",
+        "#2d3629",
+        "#f0dfc3"
+      ],
+      "tracks": [
+        {
+          "title": "登录",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E4%B9%90%E9%80%8F%E4%BA%BA%E7%94%9FGT%EF%BC%9A%E5%8D%B3%E5%88%BB%E5%85%A5%E6%88%8F/01-%E7%99%BB%E5%BD%95.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/乐透人生GT：即刻入戏/登录.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "马师",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E4%B9%90%E9%80%8F%E4%BA%BA%E7%94%9FGT%EF%BC%9A%E5%8D%B3%E5%88%BB%E5%85%A5%E6%88%8F/02-%E9%A9%AC%E5%B8%88.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/乐透人生GT：即刻入戏/马师.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "曼巴Flow",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E4%B9%90%E9%80%8F%E4%BA%BA%E7%94%9FGT%EF%BC%9A%E5%8D%B3%E5%88%BB%E5%85%A5%E6%88%8F/03-%E6%9B%BC%E5%B7%B4Flow.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/乐透人生GT：即刻入戏/曼巴Flow.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "钻石车子票子",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E4%B9%90%E9%80%8F%E4%BA%BA%E7%94%9FGT%EF%BC%9A%E5%8D%B3%E5%88%BB%E5%85%A5%E6%88%8F/04-%E9%92%BB%E7%9F%B3%E8%BD%A6%E5%AD%90%E7%A5%A8%E5%AD%90.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/乐透人生GT：即刻入戏/钻石车子票子.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "T0",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E4%B9%90%E9%80%8F%E4%BA%BA%E7%94%9FGT%EF%BC%9A%E5%8D%B3%E5%88%BB%E5%85%A5%E6%88%8F/05-T0.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/乐透人生GT：即刻入戏/T0.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "Whatever",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E4%B9%90%E9%80%8F%E4%BA%BA%E7%94%9FGT%EF%BC%9A%E5%8D%B3%E5%88%BB%E5%85%A5%E6%88%8F/06-Whatever.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/乐透人生GT：即刻入戏/Whatever.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "King Style",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E4%B9%90%E9%80%8F%E4%BA%BA%E7%94%9FGT%EF%BC%9A%E5%8D%B3%E5%88%BB%E5%85%A5%E6%88%8F/07-King%20Style.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/乐透人生GT：即刻入戏/King Style.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "Still On The Top",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E4%B9%90%E9%80%8F%E4%BA%BA%E7%94%9FGT%EF%BC%9A%E5%8D%B3%E5%88%BB%E5%85%A5%E6%88%8F/08-Still%20On%20The%20Top.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/乐透人生GT：即刻入戏/Still On The Top.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "Gas Me Up",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E4%B9%90%E9%80%8F%E4%BA%BA%E7%94%9FGT%EF%BC%9A%E5%8D%B3%E5%88%BB%E5%85%A5%E6%88%8F/09-Gas%20Me%20Up.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/乐透人生GT：即刻入戏/Gas Me Up.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "Hotel Lobby",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E4%B9%90%E9%80%8F%E4%BA%BA%E7%94%9FGT%EF%BC%9A%E5%8D%B3%E5%88%BB%E5%85%A5%E6%88%8F/10-Hotel%20Lobby.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/乐透人生GT：即刻入戏/Hotel Lobby.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "爬山虎",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E4%B9%90%E9%80%8F%E4%BA%BA%E7%94%9FGT%EF%BC%9A%E5%8D%B3%E5%88%BB%E5%85%A5%E6%88%8F/11-%E7%88%AC%E5%B1%B1%E8%99%8E.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/乐透人生GT：即刻入戏/爬山虎.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "你说对了",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E4%B9%90%E9%80%8F%E4%BA%BA%E7%94%9FGT%EF%BC%9A%E5%8D%B3%E5%88%BB%E5%85%A5%E6%88%8F/12-%E4%BD%A0%E8%AF%B4%E5%AF%B9%E4%BA%86.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/乐透人生GT：即刻入戏/你说对了.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "Tell Dem Boys",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E4%B9%90%E9%80%8F%E4%BA%BA%E7%94%9FGT%EF%BC%9A%E5%8D%B3%E5%88%BB%E5%85%A5%E6%88%8F/13-Tell%20Dem%20Boys.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/乐透人生GT：即刻入戏/Tell Dem Boys.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "娱公移山",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E4%B9%90%E9%80%8F%E4%BA%BA%E7%94%9FGT%EF%BC%9A%E5%8D%B3%E5%88%BB%E5%85%A5%E6%88%8F/14-%E5%A8%B1%E5%85%AC%E7%A7%BB%E5%B1%B1.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/乐透人生GT：即刻入戏/娱公移山.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        }
+      ],
+      "coverStatus": "external-webp"
+    },
+    {
+      "title": "乐透人生",
+      "displayTitle": "乐透人生",
+      "artist": "马思唯",
+      "artistDisplay": "Masiwei",
+      "year": "2024",
+      "type": "Album",
+      "cover": "./covers/12-letourensheng.webp",
+      "palette": [
+        "#060606",
+        "#2d3629",
+        "#f0dfc3"
+      ],
+      "tracks": [
+        {
+          "title": "House Music",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E4%B9%90%E9%80%8F%E4%BA%BA%E7%94%9F/01-House%20Music.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/乐透人生/House Music.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "太成都",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E4%B9%90%E9%80%8F%E4%BA%BA%E7%94%9F/02-%E5%A4%AA%E6%88%90%E9%83%BD.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/乐透人生/太成都.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "丝绸之路",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E4%B9%90%E9%80%8F%E4%BA%BA%E7%94%9F/03-%E4%B8%9D%E7%BB%B8%E4%B9%8B%E8%B7%AF.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/乐透人生/丝绸之路.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "Bad",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E4%B9%90%E9%80%8F%E4%BA%BA%E7%94%9F/04-Bad.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/乐透人生/Bad.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "Uh Uh Uh",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E4%B9%90%E9%80%8F%E4%BA%BA%E7%94%9F/05-Uh%20Uh%20Uh.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/乐透人生/Uh Uh Uh.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "杨帅",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E4%B9%90%E9%80%8F%E4%BA%BA%E7%94%9F/06-%E6%9D%A8%E5%B8%85.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/乐透人生/杨帅.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "Rendez Vous",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E4%B9%90%E9%80%8F%E4%BA%BA%E7%94%9F/07-Rendez%20Vous.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/乐透人生/Rendez Vous.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "黄色迷彩",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E4%B9%90%E9%80%8F%E4%BA%BA%E7%94%9F/08-%E9%BB%84%E8%89%B2%E8%BF%B7%E5%BD%A9.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/乐透人生/黄色迷彩.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "威尼斯人",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E4%B9%90%E9%80%8F%E4%BA%BA%E7%94%9F/09-%E5%A8%81%E5%B0%BC%E6%96%AF%E4%BA%BA.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/乐透人生/威尼斯人.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "Passport",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E4%B9%90%E9%80%8F%E4%BA%BA%E7%94%9F/10-Passport.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/乐透人生/Passport.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "BSYMS",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E4%B9%90%E9%80%8F%E4%BA%BA%E7%94%9F/11-BSYMS.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/乐透人生/BSYMS.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "Pop Music",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E4%B9%90%E9%80%8F%E4%BA%BA%E7%94%9F/12-Pop%20Music.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/乐透人生/Pop Music.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "狮子王",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E4%B9%90%E9%80%8F%E4%BA%BA%E7%94%9F/13-%E7%8B%AE%E5%AD%90%E7%8E%8B.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/乐透人生/狮子王.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "牛头马面",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E4%B9%90%E9%80%8F%E4%BA%BA%E7%94%9F/14-%E7%89%9B%E5%A4%B4%E9%A9%AC%E9%9D%A2.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/乐透人生/牛头马面.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "有空有空",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E4%B9%90%E9%80%8F%E4%BA%BA%E7%94%9F/15-%E6%9C%89%E7%A9%BA%E6%9C%89%E7%A9%BA.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/乐透人生/有空有空.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "Ur Smile",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E4%B9%90%E9%80%8F%E4%BA%BA%E7%94%9F/16-Ur%20Smile.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/乐透人生/Ur Smile.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "Switch Room",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E4%B9%90%E9%80%8F%E4%BA%BA%E7%94%9F/17-Switch%20Room.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/乐透人生/Switch Room.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "太成都 (Remix)",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E4%B9%90%E9%80%8F%E4%BA%BA%E7%94%9F/18-%E5%A4%AA%E6%88%90%E9%83%BD%20(Remix).mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/乐透人生/太成都 (Remix).lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        }
+      ],
+      "coverStatus": "external-webp"
+    },
+    {
+      "title": "Promise",
+      "displayTitle": "Promise",
+      "artist": "HARIKIRI / 马思唯 / 朴宰范",
+      "artistDisplay": "Masiwei",
+      "year": "2021",
+      "type": "Single",
+      "cover": "./covers/13-promise.webp",
+      "palette": [
+        "#060606",
+        "#2d3629",
+        "#f0dfc3"
+      ],
+      "tracks": [
+        {
+          "title": "Promise",
+          "artist": "HARIKIRI / 马思唯 / 朴宰范",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/Promise/01-Promise.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/Promise/Promise.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        }
+      ],
+      "coverStatus": "external-webp"
+    },
+    {
+      "title": "特别怪人",
+      "displayTitle": "特别怪人",
+      "artist": "马思唯",
+      "artistDisplay": "Masiwei",
+      "year": "2023",
+      "type": "Album",
+      "cover": "./covers/14-tebieguairen.webp",
+      "palette": [
+        "#060606",
+        "#2d3629",
+        "#f0dfc3"
+      ],
+      "tracks": [
+        {
+          "title": "Ruff Ryder",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E7%89%B9%E5%88%AB%E6%80%AA%E4%BA%BA/01-Ruff%20Ryder.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/特别怪人/Ruff Ryder.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "摩斯密码",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E7%89%B9%E5%88%AB%E6%80%AA%E4%BA%BA/02-%E6%91%A9%E6%96%AF%E5%AF%86%E7%A0%81.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/特别怪人/摩斯密码.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "200",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E7%89%B9%E5%88%AB%E6%80%AA%E4%BA%BA/03-200.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/特别怪人/200.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "She's Too Good For Me",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E7%89%B9%E5%88%AB%E6%80%AA%E4%BA%BA/04-She's%20Too%20Good%20For%20Me.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/特别怪人/She's Too Good For Me.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "梭梭板",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E7%89%B9%E5%88%AB%E6%80%AA%E4%BA%BA/05-%E6%A2%AD%E6%A2%AD%E6%9D%BF.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/特别怪人/梭梭板.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "下午茶",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E7%89%B9%E5%88%AB%E6%80%AA%E4%BA%BA/06-%E4%B8%8B%E5%8D%88%E8%8C%B6.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/特别怪人/下午茶.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "疯狂星期五",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E7%89%B9%E5%88%AB%E6%80%AA%E4%BA%BA/07-%E7%96%AF%E7%8B%82%E6%98%9F%E6%9C%9F%E4%BA%94.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/特别怪人/疯狂星期五.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "这儿，那儿",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E7%89%B9%E5%88%AB%E6%80%AA%E4%BA%BA/08-%E8%BF%99%E5%84%BF%EF%BC%8C%E9%82%A3%E5%84%BF.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/特别怪人/这儿，那儿.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "爸爸是传奇",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E7%89%B9%E5%88%AB%E6%80%AA%E4%BA%BA/09-%E7%88%B8%E7%88%B8%E6%98%AF%E4%BC%A0%E5%A5%87.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/特别怪人/爸爸是传奇.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "Superstar",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E7%89%B9%E5%88%AB%E6%80%AA%E4%BA%BA/10-Superstar.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/特别怪人/Superstar.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "胡说八道",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E7%89%B9%E5%88%AB%E6%80%AA%E4%BA%BA/11-%E8%83%A1%E8%AF%B4%E5%85%AB%E9%81%93.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/特别怪人/胡说八道.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "雕虫小技",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E7%89%B9%E5%88%AB%E6%80%AA%E4%BA%BA/12-%E9%9B%95%E8%99%AB%E5%B0%8F%E6%8A%80.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/特别怪人/雕虫小技.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "吃儿火锅",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E7%89%B9%E5%88%AB%E6%80%AA%E4%BA%BA/13-%E5%90%83%E5%84%BF%E7%81%AB%E9%94%85.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/特别怪人/吃儿火锅.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "开水",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E7%89%B9%E5%88%AB%E6%80%AA%E4%BA%BA/14-%E5%BC%80%E6%B0%B4.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/特别怪人/开水.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "兰博基尼炒饭",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E7%89%B9%E5%88%AB%E6%80%AA%E4%BA%BA/15-%E5%85%B0%E5%8D%9A%E5%9F%BA%E5%B0%BC%E7%82%92%E9%A5%AD.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/特别怪人/兰博基尼炒饭.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "VSOP",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/%E7%89%B9%E5%88%AB%E6%80%AA%E4%BA%BA/16-VSOP.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/特别怪人/VSOP.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        }
+      ],
+      "coverStatus": "external-webp"
+    },
+    {
+      "title": "A Few Good Kids",
+      "displayTitle": "A Few Good Kids",
+      "artist": "马思唯",
+      "artistDisplay": "Masiwei",
+      "year": "2019",
+      "type": "Album",
+      "cover": "./covers/15-a-few-good-kids.webp",
+      "palette": [
+        "#060606",
+        "#2d3629",
+        "#f0dfc3"
+      ],
+      "tracks": [
+        {
+          "title": "Overseas Freestyle",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/A%20Few%20Good%20Kids/01-Overseas%20Freestyle.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "Young Prince",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/A%20Few%20Good%20Kids/02-Young%20Prince.mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/A Few Good Kids/Young Prince.lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "Blue (Prod. By Tantu)",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/A%20Few%20Good%20Kids/03-Blue%20(Prod.%20By%20Tantu).mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/A Few Good Kids/Blue (Prod. By Tantu).lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "不爱你了 (Prod. By Snapz)",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/A%20Few%20Good%20Kids/04-%E4%B8%8D%E7%88%B1%E4%BD%A0%E4%BA%86%20(Prod.%20By%20Snapz).mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/A Few Good Kids/不爱你了 (Prod. By Snapz).lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "My Style (Prod. By Harikiri)",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/A%20Few%20Good%20Kids/05-My%20Style%20(Prod.%20By%20Harikiri).mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/A Few Good Kids/My Style (Prod. By Harikiri).lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "Ape (Prod. By Blasian Beats)",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/A%20Few%20Good%20Kids/06-Ape%20(Prod.%20By%20Blasian%20Beats).mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/A Few Good Kids/Ape (Prod. By Blasian Beats).lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "Small Chainz (Prod. By Kino Beats)",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/A%20Few%20Good%20Kids/07-Small%20Chainz%20(Prod.%20By%20Kino%20Beats).mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/A Few Good Kids/Small Chainz (Prod. By Kino Beats).lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "You Don't Know (Prod By Snapz)",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/A%20Few%20Good%20Kids/08-You%20Don't%20Know%20(Prod%20By%20Snapz).mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/A Few Good Kids/You Don't Know (Prod By Snapz).lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "我不再担心 (Prod. By Snapz)",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/A%20Few%20Good%20Kids/09-%E6%88%91%E4%B8%8D%E5%86%8D%E6%8B%85%E5%BF%83%20(Prod.%20By%20Snapz).mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/A Few Good Kids/我不再担心 (Prod. By Snapz).lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "赚更多 (Prod. By Lex Luger)",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/A%20Few%20Good%20Kids/10-%E8%B5%9A%E6%9B%B4%E5%A4%9A%20(Prod.%20By%20Lex%20Luger).mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/A Few Good Kids/赚更多 (Prod. By Lex Luger).lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
+          "lyrics": ""
+        },
+        {
+          "title": "I Really Mean It Freestyle (Prod By Just Blaze)",
+          "artist": "马思唯",
+          "audio": "https://pub-bf6c625d61634054bc2ce5d65fd24d5e.r2.dev/audio/A%20Few%20Good%20Kids/11-I%20Really%20Mean%20It%20Freestyle%20(Prod%20By%20Just%20Blaze).mp3",
+          "duration": 0,
+          "lyricPreview": "",
+          "lyricsUrl": "./lyrics/A Few Good Kids/I Really Mean It Freestyle (Prod By Just Blaze).lrc",
+          "lyricsFormat": "lrc",
+          "lyricsOffset": 0,
           "lyrics": ""
         }
       ],
